@@ -1,10 +1,12 @@
-.playField {
-  background-color: peachPuff;
+.playField{
+  background-image: url(../images/quidditchField.png);
   border: 3px solid black;
   height: 700px;
   width: 600px;
   position: absolute;
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -13,24 +15,44 @@
 }
 
 .gameCharacter {
-  background-color: black;
-  height: 30px;
-  width: 30px;
+  background-image: url(../images/quaffle.png);
+  height: 50px;
+  width: 50px;
   position: absolute;
+  background-size: cover;
   top: 50%;
   left: 40%;
 }
 
 .hoop{
-  background-color: blue;
-  height: 400px;
-  width: 20px;
+  background-image: url(../images/hoop1.png);
+  height: 500px;
+  width: 50px;
   position: absolute;
+  background-size: cover;
   right: 0;
   bottom: 0;
 }
 
+.scoreboard{
+  border: 2px solid black;
+  width: 145px;
+  margin: 10px auto;
+}
 
+.points{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+
+}
+
+h2{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+
+}
 
 /* .fallAnimation{
   animation-name: fall;
