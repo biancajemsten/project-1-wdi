@@ -4,32 +4,13 @@ $(()=>{
 
   function divCreator(){
     const $div = $('<div />');
-    $div.addClass('obstacle');
+    $div.addClass('hoop');
     $playField.append($div);
-    console.log($div);
-    // divMover();
+    // divMover can be stopped but might remove the "const" later
     const divMover = setInterval(function(){
-      console.log($div);
       $div.css('left', '-=10px');
-    },1000);
-
+    },500);
   }
-
-
-  //Pseudo
-  //
-
-  // setInterval(function(){
-  //       if(direction){
-  //         if($bowser.position().left + bowserWidth > windowWidth) direction = false;
-  //         $bowser.css('left', '+=10px');
-  //       }else{
-  //         if($bowser.position().left < 0) direction = true;
-  //         $bowser.css('left', '-=10px');
-  //       }
-  //     }, 30);
-
-
 
   //this how you would do gravity?
   // $gameCharacter.throwable({gravity: {x: 0, y: -0.1}});
@@ -48,9 +29,21 @@ $(()=>{
     });
   }
 
+  Math.floor(Math.random()*6000);
+
   function init(){
     moveCharacter();
-    $(document).on('click', divCreator);
+    $(document).on('keydown', function(e){
+      if (e.which === 13){
+        console.log('enter');
+        e.preventDefault();
+        const hoopDispatcher = function(){
+          divCreator();
+          setInterval((divCreator),Math.floor(Math.random()*6000));
+        };
+        hoopDispatcher();
+      }
+    });
   }
 
   init();
