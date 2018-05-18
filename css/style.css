@@ -28,7 +28,23 @@
   position: absolute;
   right: 0;
   bottom: 0;
-
 }
+
+
+
+/* .fallAnimation{
+  animation-name: fall;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes fall{
+  0% {
+    bottom: 100%;
+  }
+  100%{
+    bottom: 0%;
+  }
+} */
 
 /*# sourceMappingURL=style.css.map */
