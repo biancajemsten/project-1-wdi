@@ -4,6 +4,14 @@ $(()=>{
   const $gameCharacter = $('.gameCharacter');
   const $playField = $('.playField');
 
+  function divCreator(){
+    const $div = document.createElement('div');
+    $playField.append($div);
+  }
+
+  $(document).on('click', divCreator);
+
+
 
   //this how you would do gravity?
   // $gameCharacter.throwable({gravity: {x: 0, y: -0.1}});
@@ -14,9 +22,11 @@ $(()=>{
         console.log('space');
         e.preventDefault();
         $gameCharacter.css('top', '-=5px');
+      }else if(e.which === 32){
+        e.preventDefault();
       }
     });
   }
 
-  moveCharacter(); 
+  moveCharacter();
 });
