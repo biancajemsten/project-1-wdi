@@ -1,0 +1,20 @@
+.playField{
+  background-color: peachPuff;
+  border: 3px solid black;
+  height: 700px;
+  width: 600px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.gameCharacter{
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+}
