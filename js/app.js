@@ -2,15 +2,19 @@ $(()=>{
   const $gameCharacter = $('.gameCharacter');
   const $playField = $('.playField');
   let $points = $('.points');
+  let gameSwitch = true;
 
   let gravityIntervalId;
+  let hoopIntervalId;
+  let divMoverIntervalId;
 
   function divCreator(){
     const $div = $('<div />');
     $div.addClass('hoop');
+    $div.addClass('detectable');
     $playField.append($div);
     // divMover can be stopped but might remove the "const" later
-    const divMover = setInterval(function(){
+    divMoverIntervalId = setInterval(function(){
       $div.css('left', '-=5px');
       $('.hoop').each(function(index, hoop){
         collisionDetector(hoop)
@@ -18,7 +22,7 @@ $(()=>{
     },50);
   }
 
-  // function to move game Character up bt pressing space
+  // function to move game Character up by pressing space
   function moveCharacter(){
     $(document).on('keydown', function(e){
       if(gravityIntervalId){
@@ -28,7 +32,6 @@ $(()=>{
         console.log('space');
         e.preventDefault();
         $gameCharacter.css('top', '-=20px');
-        // clearInterval(falling);
         gravityIntervalId = setInterval(function(){
           $gameCharacter.css('top', '+=2px');
         },50);
@@ -39,8 +42,9 @@ $(()=>{
   }
 
   function collisionDetector(shape){
-    const left = parseInt($gameCharacter.css('left'));
-    const top = parseInt($gameCharacter.css('top'));
+    //--> is this code even needed?
+    // const left = parseInt($gameCharacter.css('left'));
+    // const top = parseInt($gameCharacter.css('top'));
 
     const $elOffset = $gameCharacter.offset();
     const $el_2 = $(shape);
@@ -51,37 +55,57 @@ $(()=>{
     $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
     $elOffset.top > $el_2_Offset.top &&
     $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 145) {
-      $points.text(+$points.text()+1);
+      if($el_2.hasClass('detectable')){
+        $points.text(+$points.text()+1);
+        $el_2.removeClass('detectable');
+      }
     }
     //detecting collisions for bar
     if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
+    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left + 24 &&
     $elOffset.top > $el_2_Offset.top +145 &&
     $gameCharacter.height() + $elOffset.top > $el_2_Offset.top + 145) {
-      $gameCharacter.css('background-color', '#FFF');
+      console.log('game over');
+      gameOver();
+    }
+    //detecting collision for top part of hoop
+    if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
+    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
+    $elOffset.top > $el_2_Offset.top &&
+    $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 2) {
+      console.log('game over');
+      gameOver();
     }
   }
 
   function init(){
-    moveCharacter();
     $(document).on('keydown', function(e){
       if (e.which === 13){
         console.log('enter');
         e.preventDefault();
+        moveCharacter();
         const hoopDispatcher = function(){
           divCreator();
-          setInterval(divCreator, 4000 );
-
+          hoopIntervalId = setInterval(divCreator, 4000 );
         };
         hoopDispatcher();
       }
     });
   }
+
+//function to reset the game conditions
+  function gameOver(){
+    $('div.hoop').remove();
+    clearInterval(hoopIntervalId);
+    alert('Game Over!');
+    clearInterval(divMoverIntervalId);
+    clearInterval(gravityIntervalId);
+    $gameCharacter.css('top', '50%');
+    $gameCharacter.css('left', '40%');
+  }
+
   init();
 });
-
-// $gameCharacter.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16))
-
 
 // Math.floor(Math.random()*6000)
 
@@ -93,63 +117,3 @@ $(()=>{
 // $gameCharacter.height() + $elOffset.top > $el_2_Offset.top) {
 //   $gameCharacter.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
 // }
-
-// ******************
-// gravity
-// ******************
-//
-// // let context = $playField.getContext('2d');
-//
-// // physical variables
-// let g = 0.1; // gravity
-// let fac = 0.8; // velocity reduction factor per bounce
-// let radius = 20; // ball radius
-// let color = "#0000ff"; // ball color
-//
-// // initialise position and velocity of ball
-// let x = 50;
-// let y = 50;
-// let vx = 2;
-// let vy = 0;
-//
-// // function gravInit() {
-// // // set up a timer
-// //   setInterval(update, 1000/60); // 60 frames per second
-// // }
-//
-// function update() {
-//   // update velocity
-//   vy += g; // gravity
-//
-//   // update position
-//   x += vx;
-//   y += vy;
-//
-//   // handle bouncing
-//   if (y > $playField.height - radius){
-//     y = $playField.height - radius;
-//     vy *= -fac;
-//   }
-//
-//
-//   // wrap around
-//   if (x > $playField.width + radius){
-//     x = -radius;
-//   }
-//
-//   // update the ball
-//   // drawBall();
-// }
-// //
-// // function drawBall() {
-// //     with (context){
-// //         clearRect(0, 0, $playField.width, $playField.height); // clear canvas
-// //         fillStyle = color;
-// //         beginPath();
-// //         arc(x, y, radius, 0, 2*Math.PI, true);
-// //         closePath();
-// //         fill();
-// //     };
-// // };
-//
-// gravInit();
