@@ -1,5 +1,5 @@
 .playField {
-  background-image: url(../images/quidditchField.png);
+  background-image: url(../images/quidditch.jpg);
   border: 60px solid black;
   height: 700px;
   width: 600px;
@@ -17,7 +17,7 @@
   margin: auto; }
 
 .gameCharacter {
-  background-image: url(../images/quaffle.png);
+  background-image: url(../images/quidditch.png);
   background-repeat: no-repeat;
   height: 50px;
   width: 50px;

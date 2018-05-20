@@ -13,8 +13,6 @@ $(()=>{
   let hoopIntervalId;
   let divMoverIntervalId;
 
-  console.log($themes);
-
   function divCreator(){
     const $div = $('<div />');
     $div.addClass('hoop');
@@ -122,6 +120,7 @@ $(()=>{
   for(let i = 0;i < $themes.length; i++){
     $themes[i].addEventListener('click', function(){
       $gameCharacter.css('background-image', `url(./images/${this.className}.png)`);
+      $playField.css('background-image', `url(./images/${this.className}.jpg)`); 
       console.log('click');
     });
   }
