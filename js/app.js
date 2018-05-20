@@ -1,7 +1,11 @@
 $(()=>{
   const $gameCharacter = $('.gameCharacter');
   const $playField = $('.playField');
-  const hoopArray = ['hoop1', 'hoop2','hoop3', 'hoop4']
+  const hoopArray = ['hoop1', 'hoop2','hoop3', 'hoop4'];
+  const audio = document.querySelector('#audio');
+  const $pokemonTheme = document.querySelector('.pokemonball');
+  const $spiderPigTheme = document.querySelector('.spiderPig');
+  const $themes = document.querySelectorAll('img');
   let $points = $('.points');
   let gameSwitch = true;
 
@@ -9,7 +13,7 @@ $(()=>{
   let hoopIntervalId;
   let divMoverIntervalId;
 
-
+  console.log($themes);
 
   function divCreator(){
     const $div = $('<div />');
@@ -61,6 +65,7 @@ $(()=>{
     $elOffset.top + $gameCharacter.height() < $el_2_Offset.top +145) {
       if($el_2.hasClass('detectable')){
         $points.text(+$points.text()+1);
+        hoopSwoosh();
         $el_2.removeClass('detectable');
       }
     }
@@ -107,6 +112,18 @@ $(()=>{
     $gameCharacter.css('top', '50%');
     $gameCharacter.css('left', '40%');
     $points.text('0');
+  }
+
+  function hoopSwoosh(){
+    audio.src = 'sounds/hoopSwoosh.wav';
+    audio.play();
+  }
+
+  for(let i = 0;i < $themes.length; i++){
+    $themes[i].addEventListener('click', function(){
+      $gameCharacter.css('background-image', `url(./images/${this.className}.png)`);
+      console.log('click');
+    });
   }
 
   init();
