@@ -1,4 +1,4 @@
-.playField{
+.playField {
   background-image: url(../images/quidditchField.png);
   border: 3px solid black;
   height: 700px;
@@ -6,13 +6,11 @@
   position: absolute;
   overflow: hidden;
   background-size: cover;
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat; }
 
 .container {
   display: flex;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .gameCharacter {
   background-image: url(../images/quaffle.png);
@@ -21,52 +19,57 @@
   position: absolute;
   background-size: cover;
   top: 50%;
-  left: 40%;
-}
+  left: 40%; }
 
-.hoop{
+.scoreboard {
+  border: 2px solid black;
+  width: 145px;
+  margin: 10px auto; }
+
+.points {
+  display: inline-block;
+  width: 70px;
+  text-align: center; }
+
+h2 {
+  display: inline-block;
+  width: 70px;
+  text-align: center; }
+
+.hoop1 {
   background-image: url(../images/hoop1.png);
+  height: 600px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0; }
+
+.hoop2 {
+  background-image: url(../images/hoop2.png);
   height: 500px;
   width: 50px;
   position: absolute;
   background-size: cover;
   right: 0;
-  bottom: 0;
-}
+  bottom: 0; }
 
-.scoreboard{
-  border: 2px solid black;
-  width: 145px;
-  margin: 10px auto;
-}
+.hoop3 {
+  background-image: url(../images/hoop3.png);
+  height: 369px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0; }
 
-.points{
-  display: inline-block;
-  width: 70px;
-  text-align: center;
-
-}
-
-h2{
-  display: inline-block;
-  width: 70px;
-  text-align: center;
-
-}
-
-/* .fallAnimation{
-  animation-name: fall;
-  animation-duration: 4s;
-  animation-iteration-count: 1;
-}
-
-@keyframes fall{
-  0% {
-    bottom: 100%;
-  }
-  100%{
-    bottom: 0%;
-  }
-} */
+.hoop4 {
+  background-image: url(../images/hoop4.png);
+  height: 250px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0; }
 
 /*# sourceMappingURL=style.css.map */

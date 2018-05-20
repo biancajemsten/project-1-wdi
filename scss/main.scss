@@ -1,8 +1,12 @@
 .playField{
-  background-color: peachPuff;
+  background-image: url(../images/quidditchField.png);
   border: 3px solid black;
   height: 700px;
   width: 600px;
+  position: absolute;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container{
@@ -10,11 +14,70 @@
   justify-content: center;
 }
 
-.gameCharacter{
-  background-color: black;
-  height: 30px;
-  width: 30px;
+.gameCharacter {
+  background-image: url(../images/quaffle.png);
+  height: 50px;
+  width: 50px;
   position: absolute;
+  background-size: cover;
   top: 50%;
   left: 40%;
+}
+
+.scoreboard{
+  border: 2px solid black;
+  width: 145px;
+  margin: 10px auto;
+}
+
+.points{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
+
+h2{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
+
+.hoop{
+}
+
+.hoop1{
+  background-image: url(../images/hoop1.png);
+  height: 600px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0;
+}
+.hoop2{
+  background-image: url(../images/hoop2.png);
+  height: 500px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0;
+}
+.hoop3{
+  background-image: url(../images/hoop3.png);
+  height: 369px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0;
+}
+.hoop4{
+  background-image: url(../images/hoop4.png);
+  height: 250px;
+  width: 50px;
+  position: absolute;
+  background-size: cover;
+  right: 0;
+  bottom: 0;
 }

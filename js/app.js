@@ -1,6 +1,7 @@
 $(()=>{
   const $gameCharacter = $('.gameCharacter');
   const $playField = $('.playField');
+  const hoopArray = ['hoop1', 'hoop2','hoop3', 'hoop4']
   let $points = $('.points');
   let gameSwitch = true;
 
@@ -8,12 +9,14 @@ $(()=>{
   let hoopIntervalId;
   let divMoverIntervalId;
 
+
+
   function divCreator(){
     const $div = $('<div />');
     $div.addClass('hoop');
+    $div.addClass(hoopArray[Math.floor(Math.random()*hoopArray.length)]);
     $div.addClass('detectable');
     $playField.append($div);
-    // divMover can be stopped but might remove the "const" later
     divMoverIntervalId = setInterval(function(){
       $div.css('left', '-=5px');
       $('.hoop').each(function(index, hoop){
@@ -33,7 +36,7 @@ $(()=>{
         e.preventDefault();
         $gameCharacter.css('top', '-=20px');
         gravityIntervalId = setInterval(function(){
-          $gameCharacter.css('top', '+=2px');
+          $gameCharacter.css('top', '+=4px');
         },50);
       }else if(e.which === 32){
         e.preventDefault();
@@ -50,11 +53,12 @@ $(()=>{
     const $el_2 = $(shape);
     const $el_2_Offset = $el_2.offset();
 
-    //detecting collisions for hoop itself
-    if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-    $elOffset.top > $el_2_Offset.top &&
-    $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 145) {
+
+    // detecting collision for points inside hoop
+    if($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
+    $elOffset.left < $el_2_Offset.left + $el_2.width() &&
+    $elOffset.top > $el_2_Offset.top + 2 &&
+    $elOffset.top + $gameCharacter.height() < $el_2_Offset.top +145) {
       if($el_2.hasClass('detectable')){
         $points.text(+$points.text()+1);
         $el_2.removeClass('detectable');
@@ -68,11 +72,11 @@ $(()=>{
       console.log('game over');
       gameOver();
     }
-    //detecting collision for top part of hoop
-    if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-    $elOffset.top > $el_2_Offset.top &&
-    $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 2) {
+    //detecting collision for top part of hoop ---> Detects too early on top part
+    if ($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
+    $elOffset.left < $el_2_Offset.left + $el_2.width() &&
+    $elOffset.top < $el_2_Offset.top &&
+    $elOffset.top + $gameCharacter.height() > $el_2_Offset.top) {
       console.log('game over');
       gameOver();
     }
@@ -93,7 +97,7 @@ $(()=>{
     });
   }
 
-//function to reset the game conditions
+  //function to reset the game conditions
   function gameOver(){
     $('div.hoop').remove();
     clearInterval(hoopIntervalId);
@@ -102,6 +106,7 @@ $(()=>{
     clearInterval(gravityIntervalId);
     $gameCharacter.css('top', '50%');
     $gameCharacter.css('left', '40%');
+    $points.text('0');
   }
 
   init();
@@ -116,4 +121,16 @@ $(()=>{
 // $elOffset.top < $el_2_Offset.top + $el_2.height() &&
 // $gameCharacter.height() + $elOffset.top > $el_2_Offset.top) {
 //   $gameCharacter.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
+// }
+
+
+// //detecting collisions for hoop itself
+// if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
+// $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
+// $elOffset.top > $el_2_Offset.top &&
+// $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 145) {
+//   if($el_2.hasClass('detectable')){
+//     $points.text(+$points.text()+1);
+//     $el_2.removeClass('detectable');
+//   }
 // }
