@@ -1,7 +1,7 @@
 @import "_gameObjects";
 @import "_sidebar";
 @import "_typography";
-@import "_welcomepage"; 
+@import "_welcomepage";
 
 header{
   display: flex;
@@ -16,6 +16,7 @@ body{
 .gamePage{
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
 }
 
 .logo{

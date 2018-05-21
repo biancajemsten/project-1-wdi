@@ -5,20 +5,23 @@ aside.sidebar{
 
 div.highScore{
   border: 5px solid white;
-  width: 145px; 
+  width: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 .themes{
   justify-content: center;
   display: flex;
   flex-flow: column wrap;
   border: 5px solid white;
-  width: 145px;
+  width: 200px;
   margin-top: 10px;
 }
 
 .scoreboard{
   border: 5px solid white;
-  width: 145px;
+  width: 200px;
 }
 
 .points{
@@ -36,3 +39,23 @@ img{
     opacity: 0.5;
   }
   }
+
+// div.boardContainer{
+//   display: flex;
+//   flex-flow: column wrap;
+//   height: auto;
+//   width: auto;
+// }
+
+div{
+  .highScoreName{
+    background-color: white;
+    width: 80px;
+    height: 100px;
+  }
+  .highScorePoints{
+    background-color: white;
+    width: 80px;
+    height: 100px;
+  }
+}
