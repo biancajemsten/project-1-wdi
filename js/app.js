@@ -5,15 +5,25 @@ $(()=>{
   const audio = document.querySelector('#audio');
   const $themes = document.querySelectorAll('img');
   const $gamePage = $('.gamePage');
+  const $welcomePage = $('.welcomePage');
+  const $submit = $('input[type=submit]');
+  const $text = $('input[type=text]');
   let $points = $('.points');
   let vSpeed = 0;
   let gravity = 1;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
+  let playerName;
 
   $gamePage.hide();
 
+  $submit.on('click', function(e){
+    e.preventDefault();
+    playerName = $text.val();
+    $welcomePage.hide();
+    $gamePage.show();
+  });
 
   function divCreator(){
     const $div = $('<div />');
