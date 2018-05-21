@@ -1,0 +1,38 @@
+aside.sidebar{
+  display: flex;
+  flex-flow: column wrap;
+}
+
+div.highScore{
+  border: 5px solid white;
+  width: 145px; 
+}
+.themes{
+  justify-content: center;
+  display: flex;
+  flex-flow: column wrap;
+  border: 5px solid white;
+  width: 145px;
+  margin-top: 10px;
+}
+
+.scoreboard{
+  border: 5px solid white;
+  width: 145px;
+}
+
+.points{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  margin: 10px auto;
+  &:hover{
+    opacity: 0.5;
+  }
+  }

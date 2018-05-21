@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
-    <script src="./js/app.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <title></title>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+  <script src="./js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <title></title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+    </div>
+  </header>
+  <main>
+    <div class="welcomePage">
+      <div class="welcomeContainer">
+        
       </div>
-    </header>
-    <main>
-      <div class="gamePage">
-        <aside class="sidebar">
-          <div class="scoreboard">
-            <h2 class="pointsH2">Points</h2>
-            <div class="points">0</div>
-          </div>
-          <div class="themes">
-            <h3>Themes</h3>
-            <img src="./images/snitch.png" alt="snitch" class="quidditch">
-            <img src="./images/pokemonball.png" alt="Pokemon Ball" class="pokemon">
-            <img src="./images/spiderPig.png" alt="Spider Pig" class="spiderPig">
-          </div>
-        </aside>
-        <div class="container">
-          <div class="playField">
-            <div class="gameCharacter"></div>
-          </div>
+    </div>
+    <div class="gamePage">
+      <aside class="sidebar">
+        <div class="scoreboard">
+          <h2 class="pointsH2">Points</h2>
+          <div class="points">0</div>
+        </div>
+        <div class="themes">
+          <h3>Themes</h3>
+          <img src="./images/snitch.png" alt="snitch" class="quidditch">
+          <img src="./images/pokemonball.png" alt="Pokemon Ball" class="pokemon">
+          <img src="./images/spiderPig.png" alt="Spider Pig" class="spiderPig">
+        </div>
+      </aside>
+      <div class="container">
+        <div class="playField">
+          <div class="gameCharacter"></div>
         </div>
       </div>
-      <audio id="audio"></audio>
-    </main>
-  </body>
+      <div class="highScore">
+        <h3>Highscores</h3>
+      </div>
+    </div>
+  </div>
+  <audio id="audio"></audio>
+</main>
+</body>
 </html>

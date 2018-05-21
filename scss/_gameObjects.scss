@@ -2,7 +2,7 @@
   background-image: url(../images/quidditch.jpg);
   height: 700px;
   width: 600px;
-  border: 15px solid white;
+  border: 30px solid white;
   position: absolute;
   overflow: hidden;
   background-size: cover;
@@ -16,7 +16,8 @@
 .container{
   display: flex;
   justify-content: center;
-  margin: auto;
+  height: 800px;
+  width: 600px;
 }
 
 .gameCharacter {

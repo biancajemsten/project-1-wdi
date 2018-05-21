@@ -1,42 +1,19 @@
 @import "_gameObjects";
+@import "_sidebar";
 
-body{
-  background-color: 	#F8F8F8;
-}
-.gamePage{
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-}
 header{
   display: flex;
   justify-content: center;
   margin: 10px;
 }
 
-aside{
-  position: absolute;
-  margin: 20px 40px;
+body{
+  background-color: #F8F8F8;
+}
+
+.gamePage{
   display: flex;
-  flex-flow: column wrap;
-  width: 150px;
-}
-
-.themes{
-  justify-content: center;
-  display: flex;
-  flex-flow: column wrap;
-}
-
-.scoreboard{
-  border: 5px solid white;
-  width: 145px;
-}
-
-.points{
-  display: inline-block;
-  width: 70px;
-  text-align: center;
+  justify-content: space-around;
 }
 
 .logo{
@@ -56,12 +33,3 @@ h2{
 h3{
   text-align: center;
 }
-img{
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  margin: 10px auto 0;
-  &:hover{
-    opacity: 0.5;
-  }
-  }

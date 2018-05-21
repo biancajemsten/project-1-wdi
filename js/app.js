@@ -4,12 +4,16 @@ $(()=>{
   const hoopArray = ['hoop1', 'hoop2','hoop3', 'hoop4'];
   const audio = document.querySelector('#audio');
   const $themes = document.querySelectorAll('img');
+  const $gamePage = $('.gamePage');
   let $points = $('.points');
   let vSpeed = 0;
   let gravity = 1;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
+
+  $gamePage.hide();
+
 
   function divCreator(){
     const $div = $('<div />');
@@ -25,7 +29,7 @@ $(()=>{
         return newTop;
       });
       $('.hoop').each(function(index, hoop){
-        collisionDetector(hoop)
+        collisionDetector(hoop);
       });
     },50);
   }
@@ -61,8 +65,8 @@ $(()=>{
       }
     }
     //detecting collisions for bar - top of character vs bar
-    if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left + 24 &&
+    if ($elOffset.left < $el_2_Offset.left + $el_2.width() - 23 &&
+    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left + 23 &&
     $elOffset.top > $el_2_Offset.top +145 &&
     $gameCharacter.height() + $elOffset.top > $el_2_Offset.top + 145) {
       console.log('game over');
@@ -108,6 +112,7 @@ $(()=>{
     $gameCharacter.css('top', '50%');
     $gameCharacter.css('left', '40%');
     $points.text('0');
+    vSpeed = 0;
   }
 
   function hoopSwoosh(){

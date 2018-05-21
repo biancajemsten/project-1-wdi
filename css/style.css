@@ -2,7 +2,7 @@
   background-image: url(../images/quidditch.jpg);
   height: 700px;
   width: 600px;
-  border: 15px solid white;
+  border: 30px solid white;
   position: absolute;
   overflow: hidden;
   background-size: cover;
@@ -11,7 +11,8 @@
 .container {
   display: flex;
   justify-content: center;
-  margin: auto; }
+  height: 800px;
+  width: 600px; }
 
 .gameCharacter {
   background-image: url(../images/quidditch.png);
@@ -59,30 +60,21 @@
   right: 0;
   bottom: 0; }
 
-body {
-  background-color: #F8F8F8; }
-
-.gamePage {
+aside.sidebar {
   display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start; }
+  flex-flow: column wrap; }
 
-header {
-  display: flex;
-  justify-content: center;
-  margin: 10px; }
-
-aside {
-  position: absolute;
-  margin: 20px 40px;
-  display: flex;
-  flex-flow: column wrap;
-  width: 150px; }
+div.highScore {
+  border: 5px solid white;
+  width: 145px; }
 
 .themes {
   justify-content: center;
   display: flex;
-  flex-flow: column wrap; }
+  flex-flow: column wrap;
+  border: 5px solid white;
+  width: 145px;
+  margin-top: 10px; }
 
 .scoreboard {
   border: 5px solid white;
@@ -92,6 +84,26 @@ aside {
   display: inline-block;
   width: 70px;
   text-align: center; }
+
+img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  margin: 10px auto; }
+  img:hover {
+    opacity: 0.5; }
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 10px; }
+
+body {
+  background-color: #F8F8F8; }
+
+.gamePage {
+  display: flex;
+  justify-content: space-around; }
 
 .logo {
   background-image: url(../images/hoopsLogo.png);
@@ -107,13 +119,5 @@ h2 {
 
 h3 {
   text-align: center; }
-
-img {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  margin: 10px auto 0; }
-  img:hover {
-    opacity: 0.5; }
 
 /*# sourceMappingURL=style.css.map */
