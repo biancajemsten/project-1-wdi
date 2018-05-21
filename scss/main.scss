@@ -3,15 +3,15 @@
 body{
   background-color: 	#F8F8F8;
 }
-main{
+.gamePage{
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-
 }
 header{
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+  margin: 10px;
 }
 
 aside{
@@ -19,12 +19,17 @@ aside{
   margin: 20px 40px;
   display: flex;
   flex-flow: column wrap;
-  width: 100px;
+  width: 150px;
 }
 
+.themes{
+  justify-content: center;
+  display: flex;
+  flex-flow: column wrap;
+}
 
 .scoreboard{
-  border: 2px solid black;
+  border: 5px solid white;
   width: 145px;
 }
 
@@ -49,13 +54,13 @@ h2{
 }
 
 h3{
-
+  text-align: center;
 }
 img{
   width: 100px;
   height: 100px;
-  border: 2px solid black;
   background-color: white;
+  margin: 10px auto 0;
   &:hover{
     opacity: 0.5;
   }

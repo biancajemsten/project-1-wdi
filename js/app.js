@@ -34,7 +34,7 @@ $(()=>{
     if (e.which === 32){
       console.log('space');
       e.preventDefault();
-      vSpeed = 5;
+      vSpeed = 8;
     }
   });
 
@@ -43,25 +43,6 @@ $(()=>{
       gameOver();
     }
   }
-// || $gameCharacter.css('top', '700'
-  // function to move game Character up by pressing space
-  // function moveCharacter(){
-  //   $(document).on('keydown', function(e){
-  //     if(gravityIntervalId){
-  //       clearInterval(gravityIntervalId);
-  //     }
-  //     if (e.which === 32 && $gameCharacter.position().top > 0){
-  //       console.log('space');
-  //       e.preventDefault();
-  //       $gameCharacter.css('top', '-=20px');
-  //       gravityIntervalId = setInterval(function(){
-  //         $gameCharacter.css('top', '+=4px');
-  //       },50);
-  //     }else if(e.which === 32){
-  //       e.preventDefault();
-  //     }
-  //   });
-  // }
 
   function collisionDetector(shape){
     const $elOffset = $gameCharacter.offset();
