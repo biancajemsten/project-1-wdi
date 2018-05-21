@@ -5,7 +5,8 @@ $(()=>{
   const audio = document.querySelector('#audio');
   const $themes = document.querySelectorAll('img');
   let $points = $('.points');
-
+  let vSpeed = 0;
+  let gravity = 1;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
@@ -18,30 +19,43 @@ $(()=>{
     $playField.append($div);
     divMoverIntervalId = setInterval(function(){
       $div.css('left', '-=5px');
+      $gameCharacter.css('top', function(i, top){
+        const newTop = `${+(top.replace('px','')) - vSpeed}px`;
+        return newTop;
+      });
       $('.hoop').each(function(index, hoop){
         collisionDetector(hoop)
       });
     },50);
   }
 
+  $(document).on('keydown', function(e){//<-------------------
+    if (e.which === 32){
+      console.log('space');
+      e.preventDefault();
+      vSpeed = 5;
+    }
+  });
+
+
   // function to move game Character up by pressing space
-  function moveCharacter(){
-    $(document).on('keydown', function(e){
-      if(gravityIntervalId){
-        clearInterval(gravityIntervalId);
-      }
-      if (e.which === 32 && $gameCharacter.position().top > 0){
-        console.log('space');
-        e.preventDefault();
-        $gameCharacter.css('top', '-=20px');
-        gravityIntervalId = setInterval(function(){
-          $gameCharacter.css('top', '+=4px');
-        },50);
-      }else if(e.which === 32){
-        e.preventDefault();
-      }
-    });
-  }
+  // function moveCharacter(){
+  //   $(document).on('keydown', function(e){
+  //     if(gravityIntervalId){
+  //       clearInterval(gravityIntervalId);
+  //     }
+  //     if (e.which === 32 && $gameCharacter.position().top > 0){
+  //       console.log('space');
+  //       e.preventDefault();
+  //       $gameCharacter.css('top', '-=20px');
+  //       gravityIntervalId = setInterval(function(){
+  //         $gameCharacter.css('top', '+=4px');
+  //       },50);
+  //     }else if(e.which === 32){
+  //       e.preventDefault();
+  //     }
+  //   });
+  // }
 
   function collisionDetector(shape){
     //--> is this code even needed?
@@ -88,12 +102,15 @@ $(()=>{
       if (e.which === 13){
         console.log('enter');
         e.preventDefault();
-        moveCharacter();
+        // moveCharacter();
         const hoopDispatcher = function(){
           divCreator();
           hoopIntervalId = setInterval(divCreator, 4000 );
         };
         hoopDispatcher();
+        gravityIntervalId = setInterval(function(){
+          vSpeed -= gravity;
+        },50);
       }
     });
   }
@@ -131,26 +148,3 @@ $(()=>{
 
   init();
 });
-
-// Math.floor(Math.random()*6000)
-
-
-//detecting collisions general
-// if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-// $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-// $elOffset.top < $el_2_Offset.top + $el_2.height() &&
-// $gameCharacter.height() + $elOffset.top > $el_2_Offset.top) {
-//   $gameCharacter.css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
-// }
-
-
-// //detecting collisions for hoop itself
-// if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
-// $elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-// $elOffset.top > $el_2_Offset.top &&
-// $gameCharacter.height() + $elOffset.top < $el_2_Offset.top + 145) {
-//   if($el_2.hasClass('detectable')){
-//     $points.text(+$points.text()+1);
-//     $el_2.removeClass('detectable');
-//   }
-// }
