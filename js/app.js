@@ -19,6 +19,7 @@ $(()=>{
     $playField.append($div);
     divMoverIntervalId = setInterval(function(){
       $div.css('left', '-=5px');
+      borderDetection();
       $gameCharacter.css('top', function(i, top){
         const newTop = `${+(top.replace('px','')) - vSpeed}px`;
         return newTop;
@@ -29,7 +30,7 @@ $(()=>{
     },50);
   }
 
-  $(document).on('keydown', function(e){//<-------------------
+  $(document).on('keydown', function(e){
     if (e.which === 32){
       console.log('space');
       e.preventDefault();
@@ -37,7 +38,12 @@ $(()=>{
     }
   });
 
-
+  function borderDetection(){
+    if ($gameCharacter.css('top') < '0' || $gameCharacter.css('bottom') < '0'){
+      gameOver();
+    }
+  }
+// || $gameCharacter.css('top', '700'
   // function to move game Character up by pressing space
   // function moveCharacter(){
   //   $(document).on('keydown', function(e){
@@ -58,14 +64,9 @@ $(()=>{
   // }
 
   function collisionDetector(shape){
-    //--> is this code even needed?
-    // const left = parseInt($gameCharacter.css('left'));
-    // const top = parseInt($gameCharacter.css('top'));
-
     const $elOffset = $gameCharacter.offset();
     const $el_2 = $(shape);
     const $el_2_Offset = $el_2.offset();
-
 
     // detecting collision for points inside hoop
     if($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
@@ -97,6 +98,7 @@ $(()=>{
     }
   }
 
+  //function that loads start of game
   function init(){
     $(document).on('keydown', function(e){
       if (e.which === 13){
@@ -140,10 +142,6 @@ $(()=>{
       audio.play();
       console.log('click');
     });
-    //MAKE THIS WORK
-    // $themes[i].addEventListener('hover', function(){
-    //   this.innerHTML(`${this.className}`);
-    // });
   }
 
   init();
