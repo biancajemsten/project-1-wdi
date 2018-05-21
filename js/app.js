@@ -3,11 +3,8 @@ $(()=>{
   const $playField = $('.playField');
   const hoopArray = ['hoop1', 'hoop2','hoop3', 'hoop4'];
   const audio = document.querySelector('#audio');
-  const $pokemonTheme = document.querySelector('.pokemonball');
-  const $spiderPigTheme = document.querySelector('.spiderPig');
   const $themes = document.querySelectorAll('img');
   let $points = $('.points');
-  let gameSwitch = true;
 
   let gravityIntervalId;
   let hoopIntervalId;
@@ -67,7 +64,7 @@ $(()=>{
         $el_2.removeClass('detectable');
       }
     }
-    //detecting collisions for bar
+    //detecting collisions for bar - top of character vs bar
     if ($elOffset.left < $el_2_Offset.left + $el_2.width() &&
     $elOffset.left + $gameCharacter.width() > $el_2_Offset.left + 24 &&
     $elOffset.top > $el_2_Offset.top +145 &&
@@ -75,6 +72,7 @@ $(()=>{
       console.log('game over');
       gameOver();
     }
+
     //detecting collision for top part of hoop ---> Detects too early on top part
     if ($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
     $elOffset.left < $el_2_Offset.left + $el_2.width() &&
@@ -120,9 +118,15 @@ $(()=>{
   for(let i = 0;i < $themes.length; i++){
     $themes[i].addEventListener('click', function(){
       $gameCharacter.css('background-image', `url(./images/${this.className}.png)`);
-      $playField.css('background-image', `url(./images/${this.className}.jpg)`); 
+      $playField.css('background-image', `url(./images/${this.className}.jpg)`);
+      audio.src = `sounds/${this.className}.mp3`;
+      audio.play();
       console.log('click');
     });
+    //MAKE THIS WORK
+    // $themes[i].addEventListener('hover', function(){
+    //   this.innerHTML(`${this.className}`);
+    // });
   }
 
   init();
