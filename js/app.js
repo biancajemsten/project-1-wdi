@@ -87,15 +87,15 @@ $(()=>{
 
   //function to detect point scoring and hitting the bars
   function collisionDetector(shape){
-    const $elOffset = $gameCharacter.offset();
+    const $gameCharacterOffset = $gameCharacter.offset();
     const $hoop = $(shape);
-    const $hoop_Offset = $hoop.offset();
+    const $hoopOffset = $hoop.offset();
 
     // detecting collision for points inside hoop
-    if($elOffset.left + $gameCharacter.width() > $hoop_Offset.left &&
-    $elOffset.left < $hoop_Offset.left + $hoop.width() &&
-    $elOffset.top > $hoop_Offset.top + 2 &&
-    $elOffset.top + $gameCharacter.height() < $hoop_Offset.top +145) {
+    if($gameCharacterOffset.left + $gameCharacter.width() > $hoopOffset.left &&
+    $gameCharacterOffset.left < $hoopOffset.left + $hoop.width() &&
+    $gameCharacterOffset.top > $hoopOffset.top + 2 &&
+    $gameCharacterOffset.top + $gameCharacter.height() < $hoopOffset.top +145) {
       if($hoop.hasClass('detectable')){
         $points.text(+$points.text()+1);
         hoopSwoosh();
@@ -103,19 +103,19 @@ $(()=>{
       }
     }
     //detecting collisions for bar - top of character vs bar
-    if ($elOffset.left < $hoop_Offset.left + $hoop.width() - 23 &&
-    $elOffset.left + $gameCharacter.width() > $hoop_Offset.left + 23 &&
-    $elOffset.top > $hoop_Offset.top +145 &&
-    $gameCharacter.height() + $elOffset.top > $hoop_Offset.top + 145) {
+    if ($gameCharacterOffset.left < $hoopOffset.left + $hoop.width() - 23 &&
+    $gameCharacterOffset.left + $gameCharacter.width() > $hoopOffset.left + 23 &&
+    $gameCharacterOffset.top > $hoopOffset.top +145 &&
+    $gameCharacter.height() + $gameCharacterOffset.top > $hoopOffset.top + 145) {
       console.log('game over');
       gameOver();
     }
 
     //detecting collision for top part of hoop ---> Detects too early on top part
-    if ($elOffset.left + $gameCharacter.width() > $hoop_Offset.left &&
-    $elOffset.left < $hoop_Offset.left + $hoop.width() &&
-    $elOffset.top < $hoop_Offset.top &&
-    $elOffset.top + $gameCharacter.height() > $hoop_Offset.top) {
+    if ($gameCharacterOffset.left + $gameCharacter.width() > $hoopOffset.left &&
+    $gameCharacterOffset.left < $hoopOffset.left + $hoop.width() &&
+    $gameCharacterOffset.top < $hoopOffset.top &&
+    $gameCharacterOffset.top + $gameCharacter.height() > $hoopOffset.top) {
       console.log('game over');
       gameOver();
     }
