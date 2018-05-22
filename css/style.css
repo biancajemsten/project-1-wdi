@@ -22,43 +22,76 @@
   position: absolute;
   background-size: contain;
   top: 50%;
-  left: 40%; }
+  left: 40%;
+  z-index: +1; }
+
+.hoop {
+  right: 0;
+  bottom: 0; }
+
+.topHoop {
+  right: 0;
+  bottom: 0; }
 
 .hoop1 {
   background-image: url(../images/hoop1.png);
   height: 600px;
   width: 50px;
   position: absolute;
+  background-size: cover; }
+
+.hoop1topPart {
+  background-image: url(../images/hoop1topPart.png);
+  height: 600px;
+  width: 25px;
+  position: absolute;
   background-size: cover;
-  right: 0;
-  bottom: 0; }
+  z-index: +1; }
 
 .hoop2 {
   background-image: url(../images/hoop2.png);
   height: 500px;
   width: 50px;
   position: absolute;
+  background-size: cover; }
+
+.hoop2topPart {
+  background-image: url(../images/hoop2topPart.png);
+  height: 500px;
+  width: 25px;
+  position: absolute;
   background-size: cover;
-  right: 0;
-  bottom: 0; }
+  z-index: +1; }
 
 .hoop3 {
   background-image: url(../images/hoop3.png);
   height: 369px;
   width: 50px;
   position: absolute;
+  background-size: cover; }
+
+.hoop3topPart {
+  background-image: url(../images/hoop3topPart.png);
+  height: 369px;
+  width: 25px;
+  position: absolute;
   background-size: cover;
-  right: 0;
-  bottom: 0; }
+  z-index: +1; }
 
 .hoop4 {
   background-image: url(../images/hoop4.png);
   height: 250px;
   width: 50px;
   position: absolute;
+  background-size: cover; }
+
+.hoop4topPart {
+  background-image: url(../images/hoop4topPart.png);
+  height: 250px;
+  width: 25px;
+  position: absolute;
   background-size: cover;
-  right: 0;
-  bottom: 0; }
+  z-index: +1; }
 
 aside.sidebar {
   display: flex;
@@ -154,8 +187,9 @@ ol.nameList {
   padding: 0;
   text-align: center; }
 
-button {
-  width: 160px; }
+button.resetButton {
+  margin: 10px auto 10px;
+  width: 180px; }
 
 header {
   display: flex;

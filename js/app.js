@@ -18,6 +18,7 @@ $(()=>{
   let hoopIntervalId;
   let divMoverIntervalId;
   let scoreValues;
+  let topHoop;
 
   $gamePage.hide();
 
@@ -35,11 +36,31 @@ $(()=>{
   function divCreator(){
     const $div = $('<div />');
     $div.addClass('hoop');
-    $div.addClass(hoopArray[Math.floor(Math.random()*hoopArray.length)]);
+    const randomClassNumber = Math.floor(Math.random()*hoopArray.length);
+    switch(randomClassNumber){
+      case 0:
+        topHoop = 'hoop1topPart';
+        break;
+      case 1:
+        topHoop = 'hoop2topPart';
+        break;
+      case 2:
+        topHoop = 'hoop3topPart';
+        break;
+      case 3:
+        topHoop = 'hoop4topPart';
+        break;
+    }
+    $div.addClass(hoopArray[randomClassNumber]);
     $div.addClass('detectable');
+    const $topDiv = $('<div />');
+    $topDiv.addClass(topHoop);
+    $topDiv.addClass('topHoop');
     $playField.append($div);
+    $playField.append($topDiv);
     divMoverIntervalId = setInterval(function(){
       $div.css('left', '-=5px');
+      $topDiv.css('left', '-=5px');
       borderDetection();
       $gameCharacter.css('top', function(i, top){
         const newTop = `${+(top.replace('px','')) - vSpeed}px`;
@@ -51,7 +72,11 @@ $(()=>{
     },50);
   }
 
-  // function to make character jump
+  //intervals for hoops
+  function hoopDispatcher(){
+    divCreator();
+    hoopIntervalId = setInterval(divCreator, 4000 );
+  }
 
   //function to detect if player hits the top
   function borderDetection(){
@@ -63,34 +88,34 @@ $(()=>{
   //function to detect point scoring and hitting the bars
   function collisionDetector(shape){
     const $elOffset = $gameCharacter.offset();
-    const $el_2 = $(shape);
-    const $el_2_Offset = $el_2.offset();
+    const $hoop = $(shape);
+    const $hoop_Offset = $hoop.offset();
 
     // detecting collision for points inside hoop
-    if($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-    $elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.top > $el_2_Offset.top + 2 &&
-    $elOffset.top + $gameCharacter.height() < $el_2_Offset.top +145) {
-      if($el_2.hasClass('detectable')){
+    if($elOffset.left + $gameCharacter.width() > $hoop_Offset.left &&
+    $elOffset.left < $hoop_Offset.left + $hoop.width() &&
+    $elOffset.top > $hoop_Offset.top + 2 &&
+    $elOffset.top + $gameCharacter.height() < $hoop_Offset.top +145) {
+      if($hoop.hasClass('detectable')){
         $points.text(+$points.text()+1);
         hoopSwoosh();
-        $el_2.removeClass('detectable');
+        $hoop.removeClass('detectable');
       }
     }
     //detecting collisions for bar - top of character vs bar
-    if ($elOffset.left < $el_2_Offset.left + $el_2.width() - 23 &&
-    $elOffset.left + $gameCharacter.width() > $el_2_Offset.left + 23 &&
-    $elOffset.top > $el_2_Offset.top +145 &&
-    $gameCharacter.height() + $elOffset.top > $el_2_Offset.top + 145) {
+    if ($elOffset.left < $hoop_Offset.left + $hoop.width() - 23 &&
+    $elOffset.left + $gameCharacter.width() > $hoop_Offset.left + 23 &&
+    $elOffset.top > $hoop_Offset.top +145 &&
+    $gameCharacter.height() + $elOffset.top > $hoop_Offset.top + 145) {
       console.log('game over');
       gameOver();
     }
 
     //detecting collision for top part of hoop ---> Detects too early on top part
-    if ($elOffset.left + $gameCharacter.width() > $el_2_Offset.left &&
-    $elOffset.left < $el_2_Offset.left + $el_2.width() &&
-    $elOffset.top < $el_2_Offset.top &&
-    $elOffset.top + $gameCharacter.height() > $el_2_Offset.top) {
+    if ($elOffset.left + $gameCharacter.width() > $hoop_Offset.left &&
+    $elOffset.left < $hoop_Offset.left + $hoop.width() &&
+    $elOffset.top < $hoop_Offset.top &&
+    $elOffset.top + $gameCharacter.height() > $hoop_Offset.top) {
       console.log('game over');
       gameOver();
     }
@@ -101,10 +126,6 @@ $(()=>{
     if (e.which === 13){
       console.log('enter');
       e.preventDefault();
-      const hoopDispatcher = function(){
-        divCreator();
-        hoopIntervalId = setInterval(divCreator, 4000 );
-      };
       hoopDispatcher();
       gravityIntervalId = setInterval(function(){
         vSpeed -= gravity;
@@ -117,6 +138,7 @@ $(()=>{
       });
     }
   });
+
 
   //function to reset the game conditions
   function gameOver(){
@@ -171,6 +193,7 @@ $(()=>{
     $gameCharacter.css('left', '40%');
     $gameCharacter.css('top', '50%');
     $('div.hoop').remove();
+    $('div.topHoop').remove();
   }
 
   function hoopSwoosh(){
@@ -192,5 +215,4 @@ $(()=>{
     localStorage.clear();
     nameHighScore();
   });
-
 });
