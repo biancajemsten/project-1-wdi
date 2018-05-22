@@ -8,11 +8,11 @@ $(()=>{
   const $welcomePage = $('.welcomePage');
   const $submit = $('input[type=submit]');
   const $text = $('input[type=text]');
-  let $points = $('.points');
+  const $points = $('.points');
   let $endScore;
   let $playerName;
   let vSpeed = 0;
-  let gravity = 1;
+  const gravity = 1;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
@@ -24,6 +24,7 @@ $(()=>{
     $playerName = $text.val();
     $welcomePage.hide();
     $gamePage.show();
+    nameHighScore();
   });
 
   function divCreator(){
@@ -48,7 +49,6 @@ $(()=>{
   // function to make character jump
   $(document).on('keydown', function(e){
     if (e.which === 32){
-      console.log('space');
       e.preventDefault();
       vSpeed = 8;
     }
@@ -125,9 +125,46 @@ $(()=>{
     vSpeed = 0;
     $endScore = $points.text();
     localStorage.setItem(`${$playerName}`, `${$endScore}`);
-    console.log(Object.keys(localStorage));
+    nameHighScore();
     reset();
   }
+
+  function highScoreSorter(scoreValues){
+    scoreValues.sort(function (a, b){
+      return b - a;
+    });
+    return scoreValues;
+  }
+
+  let scoreValues;
+  const noDuplicateScore = [];
+
+  function duplicateCheck (scoreValues){
+    $.each(scoreValues, function(i, el){
+      if($.inArray(el, noDuplicateScore) === -1) noDuplicateScore.push(el);
+    });
+  }
+
+  function nameHighScore(){
+    $('ol').text('');
+    scoreValues = Object.values(localStorage);
+    highScoreSorter(scoreValues);
+    duplicateCheck(scoreValues);
+    for (let m=0; m< noDuplicateScore.length; m++){
+      for(var key in localStorage){
+        if(localStorage[key] === noDuplicateScore[m]) {
+          const $name = $('<li />');
+          $name.text(key);
+          $name.appendTo('.nameList');
+          const $score = $('<li />');
+          $score.text(noDuplicateScore[m]);
+          $score.appendTo('.pointList');
+        }
+      }
+    }
+  }
+
+
 
   function reset(){
     $points.text('0');
@@ -147,7 +184,6 @@ $(()=>{
       $playField.css('background-image', `url(./images/${this.className}.jpg)`);
       audio.src = `sounds/${this.className}.mp3`;
       audio.play();
-      console.log('click');
     });
   }
 

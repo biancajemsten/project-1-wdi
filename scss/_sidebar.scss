@@ -40,22 +40,28 @@ img{
   }
   }
 
-// div.boardContainer{
-//   display: flex;
-//   flex-flow: column wrap;
-//   height: auto;
-//   width: auto;
-// }
-
 div{
-  .highScoreName{
+  &.highScoreName{
     background-color: white;
     width: 80px;
     height: 100px;
   }
-  .highScorePoints{
+  &.highScorePoints{
     background-color: white;
     width: 80px;
     height: 100px;
+  }
+}
+
+ol{
+  &.pointList{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  &.nameList{
+    list-style: none;
+    padding: 0;
+    text-align: center;
   }
 }

@@ -96,14 +96,23 @@ img {
   img:hover {
     opacity: 0.5; }
 
-div .highScoreName {
+div.highScoreName {
   background-color: white;
   width: 80px;
   height: 100px; }
-div .highScorePoints {
+div.highScorePoints {
   background-color: white;
   width: 80px;
   height: 100px; }
+
+ol.pointList {
+  list-style: none;
+  padding: 0;
+  text-align: center; }
+ol.nameList {
+  list-style: none;
+  padding: 0;
+  text-align: center; }
 
 h1 {
   text-align: center; }
