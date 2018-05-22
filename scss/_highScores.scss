@@ -1,0 +1,24 @@
+div.highScore{
+  border: 5px solid white;
+  width: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+ol{
+  &.pointList{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  &.nameList{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+button{
+  width: 160px;
+}

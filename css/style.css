@@ -64,13 +64,6 @@ aside.sidebar {
   display: flex;
   flex-flow: column wrap; }
 
-div.highScore {
-  border: 5px solid white;
-  width: 200px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around; }
-
 .themes {
   justify-content: center;
   display: flex;
@@ -80,12 +73,21 @@ div.highScore {
   margin-top: 10px; }
 
 .scoreboard {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
   border: 5px solid white;
-  width: 200px; }
+  height: 50px; }
 
 .points {
-  display: inline-block;
-  width: 70px;
+  width: 80px;
+  margin: auto;
+  text-align: center; }
+
+.pointsH2 {
+  width: 80px;
+  margin: auto;
   text-align: center; }
 
 img {
@@ -99,28 +101,17 @@ img {
 div.highScoreName {
   background-color: white;
   width: 80px;
-  height: 100px; }
+  max-height: 800px; }
 div.highScorePoints {
   background-color: white;
   width: 80px;
-  height: 100px; }
-
-ol.pointList {
-  list-style: none;
-  padding: 0;
-  text-align: center; }
-ol.nameList {
-  list-style: none;
-  padding: 0;
-  text-align: center; }
+  max-height: 800px; }
 
 h1 {
   text-align: center; }
 
 h2 {
-  width: 70px;
-  text-align: center;
-  display: inline-block; }
+  text-align: center; }
 
 h3 {
   text-align: center;
@@ -138,6 +129,33 @@ p {
   height: auto;
   margin: 20px auto;
   padding: 20px; }
+
+.loadGamePage {
+  margin: 0 auto; }
+
+.loadButtonDiv {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; }
+
+div.highScore {
+  border: 5px solid white;
+  width: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around; }
+
+ol.pointList {
+  list-style: none;
+  padding: 0;
+  text-align: center; }
+ol.nameList {
+  list-style: none;
+  padding: 0;
+  text-align: center; }
+
+button {
+  width: 160px; }
 
 header {
   display: flex;

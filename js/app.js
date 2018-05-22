@@ -6,27 +6,32 @@ $(()=>{
   const $themes = document.querySelectorAll('img');
   const $gamePage = $('.gamePage');
   const $welcomePage = $('.welcomePage');
-  const $submit = $('input[type=submit]');
-  const $text = $('input[type=text]');
   const $points = $('.points');
+  const noDuplicateScore = [];
+  const gravity = 1;
+  const $resetButton = $('.resetButton');
+  const $loadGamePage = $('.loadGamePage');
   let $endScore;
   let $playerName;
   let vSpeed = 0;
-  const gravity = 1;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
+  let scoreValues;
 
   $gamePage.hide();
 
-  $submit.on('click', function(e){
-    e.preventDefault();
-    $playerName = $text.val();
+  $loadGamePage.on('click', function(){
     $welcomePage.hide();
     $gamePage.show();
     nameHighScore();
   });
 
+  function getPlayerName(){
+    $playerName = prompt('Game Over! What\'s your name?');
+  }
+
+  //function to create hoops in different sizes
   function divCreator(){
     const $div = $('<div />');
     $div.addClass('hoop');
@@ -47,12 +52,6 @@ $(()=>{
   }
 
   // function to make character jump
-  $(document).on('keydown', function(e){
-    if (e.which === 32){
-      e.preventDefault();
-      vSpeed = 8;
-    }
-  });
 
   //function to detect if player hits the top
   function borderDetection(){
@@ -98,28 +97,31 @@ $(()=>{
   }
 
   //function that loads start of game
-  function init(){
-    $(document).on('keydown', function(e){
-      if (e.which === 13){
-        console.log('enter');
-        e.preventDefault();
-        // moveCharacter();
-        const hoopDispatcher = function(){
-          divCreator();
-          hoopIntervalId = setInterval(divCreator, 4000 );
-        };
-        hoopDispatcher();
-        gravityIntervalId = setInterval(function(){
-          vSpeed -= gravity;
-        },50);
-      }
-    });
-  }
+  $(document).on('keydown', function(e){
+    if (e.which === 13){
+      console.log('enter');
+      e.preventDefault();
+      const hoopDispatcher = function(){
+        divCreator();
+        hoopIntervalId = setInterval(divCreator, 4000 );
+      };
+      hoopDispatcher();
+      gravityIntervalId = setInterval(function(){
+        vSpeed -= gravity;
+      },50);
+      $(document).on('keydown', function(e){
+        if (e.which === 32){
+          e.preventDefault();
+          vSpeed = 8;
+        }
+      });
+    }
+  });
 
   //function to reset the game conditions
   function gameOver(){
+    getPlayerName();
     clearInterval(hoopIntervalId);
-    alert('Game Over!');
     clearInterval(divMoverIntervalId);
     clearInterval(gravityIntervalId);
     vSpeed = 0;
@@ -129,6 +131,7 @@ $(()=>{
     reset();
   }
 
+  // function to sort the high scores by value
   function highScoreSorter(scoreValues){
     scoreValues.sort(function (a, b){
       return b - a;
@@ -136,15 +139,14 @@ $(()=>{
     return scoreValues;
   }
 
-  let scoreValues;
-  const noDuplicateScore = [];
-
-  function duplicateCheck (scoreValues){
+  //function to prevent names getting printed twice if they have the same score
+  function duplicateCheck(scoreValues){
     $.each(scoreValues, function(i, el){
       if($.inArray(el, noDuplicateScore) === -1) noDuplicateScore.push(el);
     });
   }
 
+  //function that updates the high score board
   function nameHighScore(){
     $('ol').text('');
     scoreValues = Object.values(localStorage);
@@ -164,8 +166,6 @@ $(()=>{
     }
   }
 
-
-
   function reset(){
     $points.text('0');
     $gameCharacter.css('left', '40%');
@@ -178,6 +178,7 @@ $(()=>{
     audio.play();
   }
 
+  //theme changer
   for(let i = 0;i < $themes.length; i++){
     $themes[i].addEventListener('click', function(){
       $gameCharacter.css('background-image', `url(./images/${this.className}.png)`);
@@ -187,5 +188,9 @@ $(()=>{
     });
   }
 
-  init();
+  $resetButton.on('click', function(){
+    localStorage.clear();
+    nameHighScore();
+  });
+
 });
