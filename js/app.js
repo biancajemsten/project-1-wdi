@@ -16,6 +16,7 @@ $(()=>{
   const $text = $('input[type=text]');
   let $endScore;
   let $playerName;
+  let $instruction;
   let vSpeed = 0;
   let gravityIntervalId;
   let hoopIntervalId;
@@ -23,7 +24,7 @@ $(()=>{
   let characterMoverIntervalId;
   let scoreValues;
   let topHoop;
-  let $instruction;
+  let gameOngoing = false;
 
   $gamePage.hide();
   $getPlayerName.hide();
@@ -144,9 +145,10 @@ $(()=>{
 
   //function that loads start of game
   $(document).on('keydown', function(e){
-    if (e.which === 13){
+    if (e.which === 13 && gameOngoing === false){
       console.log('enter');
       e.preventDefault();
+      gameOngoing = true;
       hoopDispatcher();
       $instruction.hide();
       clearInterval(gravityIntervalId);
@@ -162,25 +164,20 @@ $(()=>{
     }
   });
 
-  // setInterval(() => {
-  //   console.log(vSpeed);
-  // }, 100);
-
   //function to reset the game conditions
   function gameOver(){
-    // console.log(gravityIntervalId, hoopIntervalId, divMoverIntervalId);
     getPlayerName();
     clearInterval(hoopIntervalId);
     clearInterval(divMoverIntervalId);
     clearInterval(gravityIntervalId);
-    clearInterval(characterMoverIntervalId); 
+    clearInterval(characterMoverIntervalId);
     $endScore = $points.text();
     vSpeed = 0;
     resetGame();
     $instruction.show();
+    gameOngoing = false;
   }
 
-  // function to sort the high scores by value
   function highScoreSorter(scoreValues){
     scoreValues.sort(function (a, b){
       return b - a;
@@ -238,6 +235,7 @@ $(()=>{
     });
   }
 
+  // button that resets the high scores
   $resetButton.on('click', function(){
     localStorage.clear();
     nameHighScore();
