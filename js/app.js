@@ -47,12 +47,9 @@ $(()=>{
     hoopSpeedUpIntervalId = setInterval(function(){
       if(hoopSpeed > 10){
         hoopSpeed -= 10;
-        console.log('level up');
-        console.log(hoopSpeed);
       }
       if(dispatchSpeed >1000){
         dispatchSpeed -= 1000;
-        console.log(dispatchSpeed);
       }
     },20000);
   }
@@ -91,6 +88,7 @@ $(()=>{
       $('.hoop').each(function(index, hoop){
         collisionDetector(hoop);
       });
+      hoopRemover();
     },hoopSpeed);
     clearInterval(characterMoverIntervalId);
     characterMoverIntervalId = setInterval(function(){
@@ -101,13 +99,21 @@ $(()=>{
     },50);
   }
 
-  //intervals for hoops
   function hoopDispatcher(){
     divCreator();
     hoopIntervalId = setInterval(divCreator, dispatchSpeed );
   }
 
-  //function to detect if player hits the top
+  //remove hoop when it leaves the window 
+  function hoopRemover(){
+    $('div').each(function(i, item){
+      const el = $(item);
+      if(el.css('left') === '0px'){
+        el.remove();
+      }
+    });
+  }
+
   function borderDetection(){
     if ($gameCharacter.css('top') < '0' || $gameCharacter.css('bottom') < '0'){
       gameOver();
@@ -240,7 +246,6 @@ $(()=>{
     }
   }
 
-
   function hoopSwoosh(){
     audio.src = 'sounds/hoopSwoosh.wav';
     audio.play();
@@ -256,7 +261,6 @@ $(()=>{
     });
   }
 
-  // button that resets the high scores
   $resetButton.on('click', function(){
     localStorage.clear();
     nameHighScore();
