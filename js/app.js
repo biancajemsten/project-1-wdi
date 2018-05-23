@@ -25,6 +25,9 @@ $(()=>{
   let scoreValues;
   let topHoop;
   let gameOngoing = false;
+  let hoopSpeed = 50;
+  let dispatchSpeed = 4000;
+  let hoopSpeedUpIntervalId;
 
   $gamePage.hide();
   $getPlayerName.hide();
@@ -39,17 +42,21 @@ $(()=>{
     startInstructions();
   });
 
-  function getPlayerName(){
-    $getPlayerName.show();
-    $submit.on('click', function(e){
-      e.preventDefault();
-      $playerName = $text.val();
-      localStorage.setItem(`${$playerName}`, `${$endScore}`);
-      nameHighScore();
-      $getPlayerName.hide();
-      $text.val('');
-    });
+  function enableLevels(){
+    clearInterval(hoopSpeedUpIntervalId);
+    hoopSpeedUpIntervalId = setInterval(function(){
+      if(hoopSpeed > 10){
+        hoopSpeed -= 10;
+        console.log('level up');
+        console.log(hoopSpeed);
+      }
+      if(dispatchSpeed >1000){
+        dispatchSpeed -= 1000;
+        console.log(dispatchSpeed);
+      }
+    },20000);
   }
+
 
   //function to create hoops in different sizes
   function divCreator(){
@@ -84,7 +91,7 @@ $(()=>{
       $('.hoop').each(function(index, hoop){
         collisionDetector(hoop);
       });
-    },50);
+    },hoopSpeed);
     clearInterval(characterMoverIntervalId);
     characterMoverIntervalId = setInterval(function(){
       $gameCharacter.css('top', function(i, top){
@@ -97,7 +104,7 @@ $(()=>{
   //intervals for hoops
   function hoopDispatcher(){
     divCreator();
-    hoopIntervalId = setInterval(divCreator, 4000 );
+    hoopIntervalId = setInterval(divCreator, dispatchSpeed );
   }
 
   //function to detect if player hits the top
@@ -155,14 +162,28 @@ $(()=>{
       gravityIntervalId = setInterval(function(){
         vSpeed -= gravity;
       },50);
+      enableLevels();
       $(document).on('keydown', function(e){
         if (e.which === 32){
           e.preventDefault();
-          vSpeed = 7;
+          vSpeed = 8;
         }
       });
     }
   });
+
+  function getPlayerName(){
+    $getPlayerName.show();
+    $submit.on('click', function(e){
+      e.preventDefault();
+      $playerName = $text.val();
+      localStorage.setItem(`${$playerName}`, `${$endScore}`);
+      nameHighScore();
+      $getPlayerName.hide();
+      $text.val('');
+      $points.text('0');
+    });
+  }
 
   //function to reset the game conditions
   function gameOver(){
@@ -171,13 +192,20 @@ $(()=>{
     clearInterval(divMoverIntervalId);
     clearInterval(gravityIntervalId);
     clearInterval(characterMoverIntervalId);
+    clearInterval(hoopSpeedUpIntervalId);
     $endScore = $points.text();
     vSpeed = 0;
-    resetGame();
     $instruction.show();
     gameOngoing = false;
+    resetGame();
   }
 
+  function resetGame(){
+    $gameCharacter.css('left', '40%');
+    $gameCharacter.css('top', '50%');
+    $('div.hoop').remove();
+    $('div.topHoop').remove();
+  }
   function highScoreSorter(scoreValues){
     scoreValues.sort(function (a, b){
       return b - a;
@@ -212,13 +240,6 @@ $(()=>{
     }
   }
 
-  function resetGame(){
-    $gameCharacter.css('left', '40%');
-    $gameCharacter.css('top', '50%');
-    $('div.hoop').remove();
-    $('div.topHoop').remove();
-    $points.text('0');
-  }
 
   function hoopSwoosh(){
     audio.src = 'sounds/hoopSwoosh.wav';
