@@ -1,11 +1,12 @@
+@import "variables";
 h1{
 text-align: center;
-font-family: 'Poppins', sans-serif;
+font-family: $font;
 }
 
 h2{
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font;
 }
 
 h3{
@@ -15,18 +16,22 @@ h3{
   &.highScoreTitle{
     width: 200px;
   }
-  font-family: 'Poppins', sans-serif;
+  font-family: $font;
 }
 
 p{
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font;
 }
 
 li{
-  font-family: 'Poppins', sans-serif;
+  font-family: $font;
 }
 
 button {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font;
+}
+
+.points{
+  font-family: $font; 
 }

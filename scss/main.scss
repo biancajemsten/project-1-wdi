@@ -2,7 +2,9 @@
 @import "_sidebar";
 @import "_typography";
 @import "_welcomepage";
-@import "highScores"; 
+@import "highScores";
+@import "variables";
+
 header{
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@ header{
 }
 
 body{
-  background-color: #F8F8F8;
+  background-color: $background-color;
 }
 
 .gamePage{

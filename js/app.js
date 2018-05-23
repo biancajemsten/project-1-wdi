@@ -11,25 +11,43 @@ $(()=>{
   const gravity = 1;
   const $resetButton = $('.resetButton');
   const $loadGamePage = $('.loadGamePage');
+  const $getPlayerName = $('.getPlayerName');
+  const $submit = $('input[type=submit]');
+  const $text = $('input[type=text]');
   let $endScore;
   let $playerName;
   let vSpeed = 0;
   let gravityIntervalId;
   let hoopIntervalId;
   let divMoverIntervalId;
+  let characterMoverIntervalId;
   let scoreValues;
   let topHoop;
+  let $instruction;
 
   $gamePage.hide();
+  $getPlayerName.hide();
+
 
   $loadGamePage.on('click', function(){
-    $welcomePage.hide();
+    $welcomePage.slideUp();
     $gamePage.show();
     nameHighScore();
+    $('.logo').css('height', '75px');
+    $('.logo').css('width', '150px');
+    startInstructions();
   });
 
   function getPlayerName(){
-    $playerName = prompt('Game Over! What\'s your name?');
+    $getPlayerName.show();
+    $submit.on('click', function(e){
+      e.preventDefault();
+      $playerName = $text.val();
+      localStorage.setItem(`${$playerName}`, `${$endScore}`);
+      nameHighScore();
+      $getPlayerName.hide();
+      $text.val('');
+    });
   }
 
   //function to create hoops in different sizes
@@ -62,12 +80,15 @@ $(()=>{
       $div.css('left', '-=5px');
       $topDiv.css('left', '-=5px');
       borderDetection();
+      $('.hoop').each(function(index, hoop){
+        collisionDetector(hoop);
+      });
+    },50);
+    clearInterval(characterMoverIntervalId);
+    characterMoverIntervalId = setInterval(function(){
       $gameCharacter.css('top', function(i, top){
         const newTop = `${+(top.replace('px','')) - vSpeed}px`;
         return newTop;
-      });
-      $('.hoop').each(function(index, hoop){
-        collisionDetector(hoop);
       });
     },50);
   }
@@ -127,30 +148,36 @@ $(()=>{
       console.log('enter');
       e.preventDefault();
       hoopDispatcher();
+      $instruction.hide();
+      clearInterval(gravityIntervalId);
       gravityIntervalId = setInterval(function(){
         vSpeed -= gravity;
       },50);
       $(document).on('keydown', function(e){
         if (e.which === 32){
           e.preventDefault();
-          vSpeed = 8;
+          vSpeed = 7;
         }
       });
     }
   });
 
+  // setInterval(() => {
+  //   console.log(vSpeed);
+  // }, 100);
 
   //function to reset the game conditions
   function gameOver(){
+    // console.log(gravityIntervalId, hoopIntervalId, divMoverIntervalId);
     getPlayerName();
     clearInterval(hoopIntervalId);
     clearInterval(divMoverIntervalId);
     clearInterval(gravityIntervalId);
-    vSpeed = 0;
+    clearInterval(characterMoverIntervalId); 
     $endScore = $points.text();
-    localStorage.setItem(`${$playerName}`, `${$endScore}`);
-    nameHighScore();
-    reset();
+    vSpeed = 0;
+    resetGame();
+    $instruction.show();
   }
 
   // function to sort the high scores by value
@@ -188,12 +215,12 @@ $(()=>{
     }
   }
 
-  function reset(){
-    $points.text('0');
+  function resetGame(){
     $gameCharacter.css('left', '40%');
     $gameCharacter.css('top', '50%');
     $('div.hoop').remove();
     $('div.topHoop').remove();
+    $points.text('0');
   }
 
   function hoopSwoosh(){
@@ -215,4 +242,10 @@ $(()=>{
     localStorage.clear();
     nameHighScore();
   });
+
+  function startInstructions(){
+    $instruction = $('<div />');
+    $instruction.text('Press Enter To Start').addClass('instruction');
+    $playField.append($instruction);
+  }
 });
