@@ -72,8 +72,13 @@ $(()=>{
     $topDiv.addClass(`${topHoop} topHoop`);
     $playField.append([$div, $topDiv]);
     divMoverIntervalId = setInterval(function(){
-      $div.css('left', '-=5px');
-      $topDiv.css('left', '-=5px');
+      if($.isMobile){
+        $div.css('left', '-=2px');
+        $topDiv.css('left', '-=2px');
+      }else{
+        $div.css('left', '-=5px');
+        $topDiv.css('left', '-=5px');
+      }
       borderDetection();
       $('.hoop').each(collisionDetector);
       hoopRemover();

@@ -51,7 +51,7 @@ form{
 .getPlayerName{
   background-color: $background-color;
   border: 5px solid white;
-  height: 75px;
+  height: 100px;
   width: 300px;
   position: absolute;
   top: 50%;
@@ -91,9 +91,14 @@ form{
   }
   // margin: 10px auto 10px;
   // width: 180px;
-}
-.closeHighScoresButton{
-  display: block;
+  .closeHighScoresButton{
+    display: block;
+  }
+
+  .getPlayerName{
+    height: 75px;
+    width: 300px;
+  }
 }
 
 @media (max-width: 768px){
@@ -103,6 +108,7 @@ form{
     top: 40%;
     left: 20%;
   }
+
   .submit{
     font-size: 8px;
   }
