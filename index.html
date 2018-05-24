@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="./js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="./css/style.css">
@@ -31,7 +32,7 @@
           <div class="points">0</div>
         </div>
         <div class="themes">
-          <h3>Themes</h3>
+          <h3 class="themesHeader">Themes</h3>
           <img src="./images/snitch.png" alt="snitch" class="quidditch">
           <img src="./images/pokemonball.png" alt="Pokemon Ball" class="pokemon">
           <img src="./images/spiderPig.png" alt="Spider Pig" class="spiderPig">
@@ -40,6 +41,13 @@
       <div class="container">
         <div class="playField">
           <div class="gameCharacter"></div>
+        </div>
+        <div class="getPlayerName">
+          <h3>Game Over!</h3>
+          <form>
+            <input type="text" class="text" placeholder="What's your name?">
+            <input type="submit" class="submit" value="Add to high score board">
+          </form>
         </div>
       </div>
       <div class="highScore">
@@ -51,13 +59,6 @@
           <ol class ="pointList"></ol>
         </div>
         <button type="button" class ="resetButton" name="reset">Reset High Scores</button>
-      </div>
-      <div class="getPlayerName">
-        <h3>Game Over!</h3>
-        <form>
-          <input type="text" placeholder="What's your name?">
-          <input type="submit" class="submit" value="Add to high score board">
-        </form>
       </div>
       </div>
     </div>

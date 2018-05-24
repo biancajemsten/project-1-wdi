@@ -124,6 +124,7 @@ $(()=>{
     if(collision($gameCharacter, $hoop)) {
       if($hoop.hasClass('detectable')){
         $points.text(+$points.text()+1);
+        $points2.text(+$points2.text()+1);
         hoopSwoosh();
         $hoop.removeClass('detectable');
       }
@@ -149,7 +150,7 @@ $(()=>{
 
   //function that loads start of game
   $(document).on('keydown', function(e){
-    if (e.which === 32 && gameOngoing === false && gamePageLoaded === true){
+    if (e.which === 13 && gameOngoing === false && gamePageLoaded === true){
       console.log('enter');
       e.preventDefault();
       gameOngoing = true;
@@ -160,10 +161,12 @@ $(()=>{
         vSpeed -= gravity;
       },50);
       enableLevels();
-    }
-    if (e.which === 32 && gameOngoing === true && gamePageLoaded === true){
-      e.preventDefault();
-      vSpeed = 9;
+      $(document).on('keydown', function(e){
+        if (e.which === 32){
+          e.preventDefault();
+          vSpeed = 9;
+        }
+      });
     }
   });
 
@@ -178,7 +181,7 @@ $(()=>{
       $getPlayerName.hide();
       $text.val('');
       $points.text('0');
-      $points2.text('0');
+      $points2.text('0'); 
     });
   }
 
@@ -257,7 +260,7 @@ $(()=>{
 
   function startInstructions(){
     $instruction = $('<h2 />');
-    $instruction.text('Press Space To Start').addClass('instruction');
+    $instruction.text('Press Enter To Start').addClass('instruction');
     $playField.append($instruction);
   }
 

@@ -40,7 +40,7 @@ button.resetButton {
 .submit {
   font-family: "Poppins", sans-serif; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1145px) {
   div.highScore {
     display: none; } }
 @media (max-width: 768px) {
@@ -77,6 +77,13 @@ aside.sidebar {
   margin: auto;
   text-align: center; }
 
+.scoreboardMediaQuery {
+  display: none;
+  position: absolute;
+  height: 30px;
+  font-size: 10px;
+  width: 60px; }
+
 .pointsH2 {
   width: 80px;
   margin: auto;
@@ -90,69 +97,45 @@ img {
   img:hover {
     opacity: 0.5; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1145px) {
   .themes {
     justify-content: center;
     display: flex;
     flex-flow: row wrap;
     border: 5px solid white;
-    margin-top: 0;
-    flex-grow: 1;
-    height: 60px; }
+    margin-top: 0; }
 
   .scoreboard {
     display: flex;
     justify-content: space-between;
     align-content: center;
     border: 5px solid white;
-    height: 60px;
-    width: 130px;
-    flex-grow: 1; }
+    height: 120px; }
 
   aside.sidebar {
     flex-flow: row wrap;
-    width: 600px;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px; }
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start; }
 
   .scoreboardMediaQuery {
     display: block; }
 
   .pointsH2 {
-    margin: auto;
+    margin: 0;
     display: inline; }
 
-  img {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    margin: auto; } }
-@media (max-width: 768px) {
-  aside.sidebar {
-    width: 256px; }
-
-  .pointsH2 {
-    font-size: 8px; }
-
-  .points {
-    font-size: 8px; }
-
-  .themes {
-    height: 30px; }
+  .points2 {
+    margin: 0;
+    display: inline;
+    width: 80px;
+    text-align: center; }
 
   img {
-    width: 25px;
-    height: 25px;
+    width: 100px;
+    height: 100px;
     background-color: white;
-    margin: auto; }
-
-  .themesHeader {
-    font-size: 8px; }
-
-  .scoreboard {
-    height: 30px;
-    width: 20px; } }
+    margin: 10px; } }
 .playField {
   background-image: url(../images/quidditch.jpg);
   height: 700px;
@@ -166,8 +149,7 @@ img {
 
 .container {
   display: flex;
-  justify-content: center;
-  width: 600px; }
+  justify-content: center; }
 
 .gameCharacter {
   background-image: url(../images/quidditch.png);
@@ -190,7 +172,7 @@ img {
   top: 50%;
   left: 30%;
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   opacity: 0.75;
   z-index: +2;
@@ -274,7 +256,7 @@ img {
     width: 100px;
     font-size: 10px;
     padding-top: 10px; } }
-@media (max-width: 1024px) {
+@media (max-width: 1445px) {
   .container {
     width: 100%; } }
 aside.sidebar {
@@ -301,6 +283,13 @@ aside.sidebar {
   margin: auto;
   text-align: center; }
 
+.scoreboardMediaQuery {
+  display: none;
+  position: absolute;
+  height: 30px;
+  font-size: 10px;
+  width: 60px; }
+
 .pointsH2 {
   width: 80px;
   margin: auto;
@@ -314,69 +303,45 @@ img {
   img:hover {
     opacity: 0.5; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1145px) {
   .themes {
     justify-content: center;
     display: flex;
     flex-flow: row wrap;
     border: 5px solid white;
-    margin-top: 0;
-    flex-grow: 1;
-    height: 60px; }
+    margin-top: 0; }
 
   .scoreboard {
     display: flex;
     justify-content: space-between;
     align-content: center;
     border: 5px solid white;
-    height: 60px;
-    width: 130px;
-    flex-grow: 1; }
+    height: 120px; }
 
   aside.sidebar {
     flex-flow: row wrap;
-    width: 600px;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px; }
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start; }
 
   .scoreboardMediaQuery {
     display: block; }
 
   .pointsH2 {
-    margin: auto;
+    margin: 0;
     display: inline; }
 
-  img {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    margin: auto; } }
-@media (max-width: 768px) {
-  aside.sidebar {
-    width: 256px; }
-
-  .pointsH2 {
-    font-size: 8px; }
-
-  .points {
-    font-size: 8px; }
-
-  .themes {
-    height: 30px; }
+  .points2 {
+    margin: 0;
+    display: inline;
+    width: 80px;
+    text-align: center; }
 
   img {
-    width: 25px;
-    height: 25px;
+    width: 100px;
+    height: 100px;
     background-color: white;
-    margin: auto; }
-
-  .themesHeader {
-    font-size: 8px; }
-
-  .scoreboard {
-    height: 30px;
-    width: 20px; } }
+    margin: 10px; } }
 h1 {
   text-align: center;
   font-family: "Poppins", sans-serif; }
@@ -406,10 +371,6 @@ button {
 .points {
   font-family: "Poppins", sans-serif; }
 
-@media (max-width: 1445px) {
-  h3 {
-    font-size: 20px;
-    margin: auto; } }
 @media (max-width: 768px) {
   h1 {
     font-size: 20px; }
@@ -488,7 +449,7 @@ button.resetButton {
 .submit {
   font-family: "Poppins", sans-serif; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1145px) {
   div.highScore {
     display: none; } }
 @media (max-width: 768px) {
@@ -512,8 +473,7 @@ body {
 .gamePage {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  flex-flow: row; }
+  align-items: flex-start; }
 
 .logo {
   background-image: url(../images/hoopsLogo.png);
@@ -521,10 +481,5 @@ body {
   background-repeat: no-repeat;
   height: 150px;
   width: 300px; }
-
-@media (max-width: 1024px) {
-  .gamePage {
-    flex-flow: column;
-    align-items: center; } }
 
 /*# sourceMappingURL=style.css.map */

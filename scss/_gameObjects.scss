@@ -1,32 +1,30 @@
 @import "variables";
+@import "highScores";
+@import "sidebar";
 
 .playField{
   background-image: url(../images/quidditch.jpg);
   height: 700px;
   width: 600px;
   border: 30px solid white;
+  box-sizing: border-box;
   position: absolute;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
-  // border-image-source: url(../images/hoopBorder.png);
-  // border-image-slice: 30;
-  // border-image-width: auto;
-  // border-image-repeat: round;
 }
 
 .container{
   display: flex;
   justify-content: center;
-  height: 800px;
   width: 600px;
 }
 
 .gameCharacter {
   background-image: url(../images/quidditch.png);
   background-repeat: no-repeat;
-  height: 50px;
-  width: 50px;
+  height: 7.142857%;
+  width: 8.33333%;
   position: absolute;
   background-size: contain;
   top: 50%;
@@ -41,14 +39,14 @@
     height: 50px;
     width: 200px;
     position: absolute;
-    top: 300px;
-    left: 200px;
+    top: 50%;
+    left: 30%;
     font-family: $font;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     opacity: 0.75;
     z-index: +2;
-    padding-top: 20px; 
+    padding-top: 20px;
 }
 
 .hoop{
@@ -61,15 +59,15 @@
 }
 .hoop1{
   background-image: url(../images/hoop1.png);
-  height: 600px;
-  width: 50px;
+  height: 85.71428%;
+  width: 8.33333%;
   position: absolute;
   background-size: cover;
 }
 .hoop1topPart{
   background-image: url(../images/hoop1topPart.png);
-  height: 600px;
-  width: 25px;
+  height: 85.71428%;
+  width: 4.16667%;
   position: absolute;
   background-size: cover;
   z-index: +1;
@@ -77,15 +75,15 @@
 
 .hoop2{
   background-image: url(../images/hoop2.png);
-  height: 500px;
-  width: 50px;
+  height: 72.42857%;
+  width: 8.33333%;
   position: absolute;
   background-size: cover;
 }
 .hoop2topPart{
   background-image: url(../images/hoop2topPart.png);
-  height: 500px;
-  width: 25px;
+  height: 72.42857%;
+  width: 4.16667%;
   position: absolute;
   background-size: cover;
   z-index: +1;
@@ -93,31 +91,57 @@
 
 .hoop3{
   background-image: url(../images/hoop3.png);
-  height: 369px;
-  width: 50px;
+  height: 52.71429%;
+  width: 8.33333%;
   position: absolute;
   background-size: cover;
 }
 .hoop3topPart{
   background-image: url(../images/hoop3topPart.png);
-  height: 369px;
-  width: 25px;
+  height: 52.71429%;
+  width: 4.16667%;
   position: absolute;
   background-size: cover;
   z-index: +1;
 }
 .hoop4{
   background-image: url(../images/hoop4.png);
-  height: 250px;
-  width: 50px;
+  height: 35.71429%;
+  width: 8.33333%;
   position: absolute;
   background-size: cover;
 }
 .hoop4topPart{
   background-image: url(../images/hoop4topPart.png);
-  height: 250px;
-  width: 25px;
+  height: 35.71429%;
+  width: 4.16667%;
   position: absolute;
   background-size: cover;
   z-index: +1;
+}
+
+
+// @media (max-width: 1142px){
+//   .playField{
+//     height: 500px;
+//     width: 430px;
+//   }
+// }
+@media (max-width: 768px){
+  .playField{
+    height: 300px;
+    width: 257.14285px;
+  }
+  .instruction{
+      height: 25px;
+      width: 100px;
+      font-size: 10px;
+      padding-top: 10px
+    }
+}
+
+@media (max-width: 1024px){
+  .container {
+    width: 100%;
+  }
 }

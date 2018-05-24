@@ -1,5 +1,5 @@
 .welcomeContainer{
-  background-color: white;  
+  background-color: white;
   width: 600px;
   height: auto;
   margin: 20px auto;
@@ -15,4 +15,16 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 768px){
+  .welcomeContainer{
+    width: 400px;
+  }
+}
+
+@media (max-width: 425px){
+  .welcomeContainer{
+    width: 200px;
+  }
 }

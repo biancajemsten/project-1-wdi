@@ -1,6 +1,7 @@
 aside.sidebar{
   display: flex;
   flex-flow: column wrap;
+  width: 14%;
 }
 
 .themes{
@@ -8,17 +9,17 @@ aside.sidebar{
   display: flex;
   flex-flow: column wrap;
   border: 5px solid white;
-  width: 200px;
+  // width: 200px;
   margin-top: 10px;
 }
 
 .scoreboard{
-  width: 200px;
+  // width: 200px;
   display: flex;
   justify-content: space-between;
   align-content: center;
   border: 5px solid white;
-  height: 50px; 
+  height: 50px;
 }
 
 .points{
@@ -46,15 +47,75 @@ img{
   }
   }
 
-div{
-  &.highScoreName{
-    background-color: white;
-    width: 80px;
-    max-height: 800px;
+  @media (max-width: 1024px){
+    .themes {
+    justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+    border: 5px solid white;
+    margin-top: 0;
+    flex-grow: 1;
+    height: 60px;
   }
-  &.highScorePoints{
+
+    .scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border: 5px solid white;
+    height: 60px;
+    width: 130px;
+    flex-grow: 1;
+    }
+
+    aside.sidebar {
+      flex-flow: row wrap;
+      width: 600px;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .scoreboardMediaQuery{
+      display:block;
+    }
+    .pointsH2{
+      margin: auto;
+      display:inline;
+      // padding: 50%;
+    }
+
+    img {
+    width: 50px;
+    height: 50px;
     background-color: white;
-    width: 80px;
-    max-height: 800px;
+    margin: auto;
+    }
   }
-}
+  @media (max-width: 768px){
+    aside.sidebar{
+      width: 256px;
+    }
+    .pointsH2{
+      font-size: 8px;
+    }
+    .points{
+      font-size: 8px;
+    }
+    .themes {
+    height: 30px;
+    }
+    img {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    margin: auto;
+    }
+    .themesHeader{
+      font-size: 8px;
+    }
+    .scoreboard {
+      height: 30px;
+      width: 20px;
+    }
+  }

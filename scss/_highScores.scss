@@ -1,6 +1,6 @@
 div.highScore{
   border: 5px solid white;
-  width: 200px;
+  width: 14%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -19,6 +19,19 @@ ol{
   }
 }
 
+div{
+  &.highScoreName{
+    background-color: white;
+    width: 80px;
+    max-height: 800px;
+  }
+  &.highScorePoints{
+    background-color: white;
+    width: 80px;
+    max-height: 800px;
+  }
+}
+
 button{
   &.resetButton{
     margin: 10px auto 10px;
@@ -34,10 +47,29 @@ button{
   position: absolute;
   top: 50%;
   left: 40%;
-  z-index: +2;
-
+  z-index: +3;
 }
 
 .submit{
-  font-family: $font; 
+  font-family: $font;
+}
+
+@media (max-width: 1024px){
+  div.highScore{
+    display: none;
+    // width: 150px;
+  }
+}
+
+@media (max-width: 768px){
+  .getPlayerName{
+    height: 100px;
+    width: 150px;
+  }
+  .submit{
+    font-size: 8px;
+  }
+  .class{
+    font-size: 8px;
+  }
 }
