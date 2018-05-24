@@ -94,7 +94,7 @@ img{
   }
   @media (max-width: 768px){
     aside.sidebar{
-      width: 256px;
+      width: 350px;
     }
     .pointsH2{
       font-size: 8px;
@@ -118,4 +118,11 @@ img{
       height: 30px;
       width: 20px;
     }
+  }
+
+  @media (max-width: 350px){
+    aside.sidebar{
+      width: 256px;
+    }
+
   }

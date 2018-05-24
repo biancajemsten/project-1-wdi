@@ -76,8 +76,8 @@ $(()=>{
         $div.css('left', '-=2px');
         $topDiv.css('left', '-=2px');
       }else{
-        $div.css('left', '-=5px');
-        $topDiv.css('left', '-=5px');
+        $div.css('left', '-=6px');
+        $topDiv.css('left', '-=6px');
       }
       borderDetection();
       $('.hoop').each(collisionDetector);
@@ -178,10 +178,10 @@ $(()=>{
   });
 
   if($.isMobile){
-    $playField.on('click', function(){
+    $playField.on('click', function(e){
       if (gameOngoing === false && gamePageLoaded === true && gameOverPageLoaded === false){
+        e.preventDefault();
         gameOngoing = true;
-        console.log(gameOverPageLoaded);
         hoopDispatcher();
         $instruction.hide();
         clearInterval(gravityIntervalId);
@@ -191,6 +191,7 @@ $(()=>{
         enableLevels();
       }
       if (gameOngoing === true && gamePageLoaded === true){
+        e.preventDefault();
         vSpeed = 7;
       }
     });

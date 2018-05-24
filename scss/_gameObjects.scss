@@ -3,7 +3,7 @@
 @import "sidebar";
 
 .playField{
-  background-image: url(../images/quidditch.jpg);
+  background-image: url(../images/spiderPig.jpg);
   height: 700px;
   width: 600px;
   border: 30px solid white;
@@ -22,7 +22,7 @@
 }
 
 .gameCharacter {
-  background-image: url(../images/quidditch.png);
+  background-image: url(../images/spiderPig.png);
   background-repeat: no-repeat;
   height: 7.142857%;
   width: 8.33333%;
@@ -121,10 +121,16 @@
   z-index: +1;
 }
 
+@media (max-width: 1024px){
+  .container {
+    width: 100%;
+  }
+}
 @media (max-width: 768px){
+
   .playField{
-    height: 300px;
-    width: 257.14285px;
+    height: 408.333px;
+    width: 350px;
     border: 15px solid white;
   }
   .instruction{
@@ -133,16 +139,27 @@
       font-size: 10px;
       padding-top: 10px;
       top: 40%;
-      left: 20%;
+      left: 30%;
     }
     .container{
-      height: 300px;
-      width: 257.14285px;
+      height: 408.333px;
+      width: 350px;
     }
 }
 
-@media (max-width: 1024px){
-  .container {
-    width: 100%;
+
+@media (max-width: 350px){
+  .playField{
+    height: 300px;
+    width: 257.14285px;
+    border: 15px solid white;
+  }
+  .instruction{
+    top: 40%;
+    left: 20%;
+  }
+  .container{
+    height: 300px;
+    width: 257.14285px;
   }
 }
