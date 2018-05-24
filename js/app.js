@@ -23,12 +23,21 @@ $(()=>{
   let hoopSpeed = 50;
   let dispatchSpeed = 3000;
   let gamePageLoaded = false;
+  let welcomePageLoaded = true;
 
   $gamePage.hide();
   $getPlayerName.hide();
 
+  $loadGamePage.on('click', loadWelcomePage);
+  $(window).on('keydown', function(e){
+    if(e.which === 13 && welcomePageLoaded === true){
+      e.preventDefault();
+      loadWelcomePage();
+    }
+  });
 
-  $loadGamePage.on('click', function(){
+
+  function loadWelcomePage(){
     $welcomePage.slideUp();
     $gamePage.show();
     nameHighScore();
@@ -38,7 +47,8 @@ $(()=>{
     });
     startInstructions();
     gamePageLoaded = true;
-  });
+    welcomePageLoaded = false;
+  }
 
 
   function enableLevels(){
@@ -106,11 +116,6 @@ $(()=>{
   const $hoopSize =  parseFloat($('.playField').css('height'))*(145/700);
   const $widthToBar = parseFloat($('.playField').css('height'))*(23/700);
 
-  console.log($topBarSize);
-  console.log($hoopSize);
-  console.log($widthToBar);
-
-
   //function to detect point scoring and hitting the bars
   function collisionDetector(index, shape){
     const $gameCharacterOffset = $gameCharacter.offset();
@@ -167,18 +172,27 @@ $(()=>{
     }
   });
 
+  function gameOverSubmit(){
+    $playerName = $text.val();
+    localStorage.setItem(`${$playerName}`, `${$endScore}`);
+    nameHighScore();
+    $getPlayerName.hide();
+    $text.val('');
+    $points.text('0');
+    $points2.text('0');
+  }
 
   function getPlayerName(){
     $getPlayerName.show();
     $submit.on('click', function(e){
       e.preventDefault();
-      $playerName = $text.val();
-      localStorage.setItem(`${$playerName}`, `${$endScore}`);
-      nameHighScore();
-      $getPlayerName.hide();
-      $text.val('');
-      $points.text('0');
-      $points2.text('0');
+      gameOverSubmit();
+    });
+    $text.on('keydown', function(e){
+      if(e.which === 13){
+        e.preventDefault();
+        gameOverSubmit();
+      }
     });
   }
 
