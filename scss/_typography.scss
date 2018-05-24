@@ -37,10 +37,10 @@ button {
 }
 
 
-@media (max-width: 1445px){
+@media (max-width: 1024px){
   h3{
     font-size: 20px;
-    margin: auto; 
+    margin: auto;
   }
 }
 
@@ -53,7 +53,13 @@ button {
     font-size: 15px;
   }
   h3{
+    font-size: 10px;
+  }
+  h2{
     font-size: 15px;
+  }
+  li{
+    font-size: 10px;
   }
 }
 
@@ -62,6 +68,9 @@ button {
     font-size: 15px;
   }
   p{
+    font-size: 10px;
+  }
+  h2{
     font-size: 10px;
   }
 }

@@ -18,6 +18,7 @@
   display: flex;
   justify-content: center;
   width: 600px;
+  height: 700px;
 }
 
 .gameCharacter {
@@ -124,12 +125,19 @@
   .playField{
     height: 300px;
     width: 257.14285px;
+    border: 15px solid white;
   }
   .instruction{
       height: 25px;
-      width: 100px;
+      width: 125px;
       font-size: 10px;
-      padding-top: 10px
+      padding-top: 10px;
+      top: 40%;
+      left: 20%;
+    }
+    .container{
+      height: 300px;
+      width: 257.14285px;
     }
 }
 

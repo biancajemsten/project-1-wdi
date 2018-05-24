@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="./js/app.js" charset="utf-8"></script>
+  <script src="./js/mobile.js" charset="utf-8"></script>
   <link rel="stylesheet" href="./css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <title></title>
@@ -41,13 +42,13 @@
       <div class="container">
         <div class="playField">
           <div class="gameCharacter"></div>
-        </div>
-        <div class="getPlayerName">
-          <h3>Game Over!</h3>
-          <form>
-            <input type="text" class="text" placeholder="What's your name?">
-            <input type="submit" class="submit" value="Add to high score board">
-          </form>
+          <div class="getPlayerName">
+            <h3>Game Over!</h3>
+            <form>
+              <input type="text" class="text" placeholder="What's your name?">
+              <input type="submit" class="submit" value="Add to high score board">
+            </form>
+          </div>
         </div>
       </div>
       <div class="highScore">
@@ -59,11 +60,13 @@
           <ol class ="pointList"></ol>
         </div>
         <button type="button" class ="resetButton" name="reset">Reset High Scores</button>
+        <button type="button" class ="closeHighScoresButton" name="close">Close High Scores</button>
       </div>
+      <div class="showHighScore">
+        <button type="button" class="showHighScoreButton">Show High Scores</button>
       </div>
     </div>
-  </div>
-  <audio id="audio"></audio>
+<audio id="audio"></audio>
 </main>
 </body>
 </html>

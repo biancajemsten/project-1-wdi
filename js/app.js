@@ -24,6 +24,7 @@ $(()=>{
   let dispatchSpeed = 3000;
   let gamePageLoaded = false;
   let welcomePageLoaded = true;
+  let gameOverPageLoaded = false;
 
   $gamePage.hide();
   $getPlayerName.hide();
@@ -155,7 +156,6 @@ $(()=>{
   //function that loads start of game
   $(document).on('keydown', function(e){
     if (e.which === 32 && gameOngoing === false && gamePageLoaded === true){
-      console.log('enter');
       e.preventDefault();
       gameOngoing = true;
       hoopDispatcher();
@@ -172,7 +172,28 @@ $(()=>{
     }
   });
 
+  if($.isMobile){
+    $playField.on('click', function(){
+      if (gameOngoing === false && gamePageLoaded === true && gameOverPageLoaded === false){
+        gameOngoing = true;
+        console.log(gameOverPageLoaded);
+        hoopDispatcher();
+        $instruction.hide();
+        clearInterval(gravityIntervalId);
+        gravityIntervalId = setInterval(function(){
+          vSpeed -= gravity;
+        },50);
+        enableLevels();
+      }
+      if (gameOngoing === true && gamePageLoaded === true){
+        vSpeed = 7;
+      }
+    });
+  }
+
+
   function gameOverSubmit(){
+    console.log(gameOverPageLoaded);
     $playerName = $text.val();
     localStorage.setItem(`${$playerName}`, `${$endScore}`);
     nameHighScore();
@@ -180,6 +201,9 @@ $(()=>{
     $text.val('');
     $points.text('0');
     $points2.text('0');
+    setTimeout(function() {
+      gameOverPageLoaded = false;
+    }, 200);
   }
 
   function getPlayerName(){
@@ -198,6 +222,8 @@ $(()=>{
 
   //function to reset the game conditions
   function gameOver(){
+    gameOverPageLoaded= true;
+    console.log(gameOverPageLoaded);
     getPlayerName();
     clearInterval(hoopIntervalId);
     clearInterval(divMoverIntervalId);
@@ -271,8 +297,24 @@ $(()=>{
 
   function startInstructions(){
     $instruction = $('<h2 />');
-    $instruction.text('Press Space To Start').addClass('instruction');
+    if($.isMobile){
+      $instruction.text('Tap To Start').addClass('instruction');
+    }else{
+      $instruction.text('Press Space To Start').addClass('instruction');
+    }
     $playField.append($instruction);
   }
+
+  $('.showHighScoreButton').on('click', function(){
+    $('.highScore').css('display', 'flex');
+    $('.showHighScoreButton').hide();
+    $('.closeHighScoresButton').show();
+  });
+
+  $('.closeHighScoresButton').on('click', function(){
+    $('.highScore').css('display', 'none');
+    $('.showHighScoreButton').show();
+    $('.closeHighScoresButton').hide();
+  });
 
 });

@@ -37,39 +37,109 @@ button{
     margin: 10px auto 10px;
     width: 180px;
   }
+  &.closeHighScoresButton{
+    display: none;
+    margin: 20px auto 10px;
+    width: 180px;
+  }
+}
+
+form{
+  margin-top: 5px;
 }
 
 .getPlayerName{
   background-color: $background-color;
   border: 5px solid white;
-  height: 100px;
+  height: 75px;
   width: 300px;
   position: absolute;
   top: 50%;
-  left: 40%;
+  left: 22%;
   z-index: +3;
+  text-align: center;
+}
+
+.text{
+  text-align: center;
 }
 
 .submit{
   font-family: $font;
 }
 
+.showHighScore{
+  display: none;
+  width: 100%;
+}
+.showHighScoreButton{
+  width: 150px;
+  text-align: center;
+  margin: 5px auto;
+}
+
 @media (max-width: 1024px){
   div.highScore{
     display: none;
-    // width: 150px;
+    width: 200px;
+    position: absolute;
+    background-color: $background-color;
+    z-index: +3;
   }
+  .showHighScore{
+    display:  flex;
+  }
+  // margin: 10px auto 10px;
+  // width: 180px;
+}
+.closeHighScoresButton{
+  display: block;
 }
 
 @media (max-width: 768px){
   .getPlayerName{
-    height: 100px;
+    height: 75px;
     width: 150px;
+    top: 40%;
+    left: 20%;
   }
   .submit{
     font-size: 8px;
   }
   .class{
     font-size: 8px;
+  }
+  .showHighScore{
+    font-size: 4px;
+  }
+  div.highScore{
+    width: 150px;
+  }
+  .closeHighScoresButton{
+    display: block;
+  }
+  button{
+    font-size: 8px;
+    &.resetButton{
+      margin: 5px auto;
+    }
+    &.closeHighScoresButton{
+      margin: 5px auto;
+      display: block;
+    }
+  }
+
+
+  div{
+    &.highScoreName{
+      background-color: white;
+      width: 60px;
+      max-height: 300px;
+    }
+    &.highScorePoints{
+      background-color: white;
+      width: 60px;
+      max-height: 300px;
+    }
   }
 }
