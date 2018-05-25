@@ -1,6 +1,6 @@
 # WDI 34 Project 1 ~ Hooops
 
-The premise of the first project was to build an in-browser game using HTML, CSS, and JavaScript as well as the jQuery library. I decided to make a version of Flappy Bird where the character goes through hoops instead of between pipes. The game is compatible with all devices.
+The premise of the first project was to build an in-browser game using HTML, CSS, and JavaScript as well as the jQuery library. I decided to make a version of Flappy Bird where the character goes through hoops instead of between pipes. A point is given each time the character goes through the hoop and if it hits the hoop the game is over. The game is compatible with all devices.
 
 ***
 
