@@ -56,8 +56,8 @@ $(()=>{
     clearInterval(hoopSpeedUpIntervalId);
     hoopSpeedUpIntervalId = setInterval(function(){
       if(hoopSpeed > 10) hoopSpeed -= 10;
-      if(dispatchSpeed >1000) dispatchSpeed -= 1000;
-    },20000);
+      if(dispatchSpeed >1200) dispatchSpeed -= 1200;
+    },15000);
   }
 
 
@@ -158,18 +158,23 @@ $(()=>{
     }
   }
 
+
+  function startTheGame(e){
+    e.preventDefault();
+    gameOngoing = true;
+    hoopDispatcher();
+    $instruction.hide();
+    clearInterval(gravityIntervalId);
+    gravityIntervalId = setInterval(function(){
+      vSpeed -= gravity;
+    },50);
+    enableLevels();
+  }
+
   //function that loads start of game
   $(document).on('keydown', function(e){
     if (e.which === 32 && gameOngoing === false && gamePageLoaded === true){
-      e.preventDefault();
-      gameOngoing = true;
-      hoopDispatcher();
-      $instruction.hide();
-      clearInterval(gravityIntervalId);
-      gravityIntervalId = setInterval(function(){
-        vSpeed -= gravity;
-      },50);
-      enableLevels();
+      startTheGame(e);
     }
     if (e.which === 32 && gameOngoing === true && gamePageLoaded === true){
       e.preventDefault();
@@ -180,15 +185,7 @@ $(()=>{
   if($.isMobile){
     $playField.on('click', function(e){
       if (gameOngoing === false && gamePageLoaded === true && gameOverPageLoaded === false){
-        e.preventDefault();
-        gameOngoing = true;
-        hoopDispatcher();
-        $instruction.hide();
-        clearInterval(gravityIntervalId);
-        gravityIntervalId = setInterval(function(){
-          vSpeed -= gravity;
-        },50);
-        enableLevels();
+        startTheGame(e);
       }
       if (gameOngoing === true && gamePageLoaded === true){
         e.preventDefault();
@@ -209,7 +206,7 @@ $(()=>{
     $points2.text('0');
     setTimeout(function() {
       gameOverPageLoaded = false;
-    }, 200);
+    }, 20);
   }
 
   function getPlayerName(){
@@ -229,7 +226,6 @@ $(()=>{
   //function to reset the game conditions
   function gameOver(){
     gameOverPageLoaded= true;
-    console.log(gameOverPageLoaded);
     getPlayerName();
     clearInterval(hoopIntervalId);
     clearInterval(divMoverIntervalId);
@@ -238,6 +234,8 @@ $(()=>{
     clearInterval(hoopSpeedUpIntervalId);
     $endScore = $points.text();
     vSpeed = 0;
+    hoopSpeed = 50;
+    dispatchSpeed = 3000;
     $instruction.show();
     gameOngoing = false;
     resetGame();

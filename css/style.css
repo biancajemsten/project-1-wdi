@@ -60,6 +60,11 @@ input.submit {
   text-align: center;
   margin: 5px auto; }
 
+@media (max-width: 1157px) {
+  div.highScoreName {
+    width: 60px; }
+  div.highScorePoints {
+    width: 60px; } }
 @media (max-width: 1024px) {
   div.highScore {
     display: none;
@@ -108,12 +113,8 @@ input.submit {
       display: block; }
 
   div.highScoreName {
-    background-color: white;
-    width: 60px;
     max-height: 300px; }
   div.highScorePoints {
-    background-color: white;
-    width: 60px;
     max-height: 300px; } }
 aside.sidebar {
   display: flex;
@@ -496,6 +497,9 @@ button {
 .points {
   font-family: "Poppins", sans-serif; }
 
+@media (max-width: 1157px) {
+  li {
+    font-size: 10px; } }
 @media (max-width: 1024px) {
   h3 {
     font-size: 20px;
@@ -607,6 +611,11 @@ input.submit {
   text-align: center;
   margin: 5px auto; }
 
+@media (max-width: 1157px) {
+  div.highScoreName {
+    width: 60px; }
+  div.highScorePoints {
+    width: 60px; } }
 @media (max-width: 1024px) {
   div.highScore {
     display: none;
@@ -655,12 +664,8 @@ input.submit {
       display: block; }
 
   div.highScoreName {
-    background-color: white;
-    width: 60px;
     max-height: 300px; }
   div.highScorePoints {
-    background-color: white;
-    width: 60px;
     max-height: 300px; } }
 header {
   display: flex;

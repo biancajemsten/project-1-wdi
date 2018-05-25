@@ -78,6 +78,17 @@ input.submit{
   margin: 5px auto;
 }
 
+@media (max-width: 1157px){
+  div{
+    &.highScoreName{
+      width: 60px;
+    }
+    &.highScorePoints{
+      width: 60px;
+    }
+  }
+}
+
 @media (max-width: 1024px){
   div.highScore{
     display: none;
@@ -138,13 +149,9 @@ input.submit{
 
   div{
     &.highScoreName{
-      background-color: white;
-      width: 60px;
       max-height: 300px;
     }
     &.highScorePoints{
-      background-color: white;
-      width: 60px;
       max-height: 300px;
     }
   }
