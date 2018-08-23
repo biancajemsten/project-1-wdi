@@ -31,7 +31,7 @@ for(let i = 0;i < $themes.length; i++){
   <tr>
     <td><p display= "inline" align="left"><img src="https://i.imgur.com/IC9O0vD.png" width="200"></p></td>
     <td><p display= "inline" align="right"><img src="https://i.imgur.com/97KrRtT.png" width="400"></p></td>
-    </tr>
+  </tr>
 </table>
 
 The game is compatible with laptops as well as tablets and phones. The implementation was lengthier than expected. It pointed out some mistakes I had made building the game to begin with, such as making the collision detection pixel specific.
@@ -39,6 +39,15 @@ The game is compatible with laptops as well as tablets and phones. The implement
 #### High Scores
 
 On mobile versions the high score pops up when pressing *Show High Scores*. This feature is linked to the local storage which allows the scores to remain on the page even when it's updated. The local storage was a challenge to implement and it still has some bugs.
+
+
+#### Wins
+
+The outcome of the game far succeeded my expectations of it. A few features I am extra proud of are:
+-	The implementation of gravity – the look and feel of the game is augmented with it
+-	How seamless it is for the user to switch themes
+-	Having set out the collision detection for the exact bits of the hoops and also having that be mobile responsive
+-	The use of local storage to save high scores
 
 #### On the to-do list  
 
